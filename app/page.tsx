@@ -1,5 +1,8 @@
-import Image from "next/image";
+import Hero from "./components/Hero";
 
 export default function Home() {
-  return <div></div>
+  return <div>
+    <Hero />
+    <div className="w-screen h-screen bg-blue-200"></div>
+  </div>
 }
