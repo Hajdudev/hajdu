@@ -10,7 +10,7 @@ export default function Header() {
         <span className="text-xl text-paper/80">About</span>
         <span className="text-xl text-paper/80">Services</span>
         <span className="text-xl text-paper/80">Pricing</span>
-        <button className="bg-pink-eraser rounded-3xl animate-background-animation from-pink-eraser via-pink-200 to-pink-300 text-2xl  px-7 py-2">Contact</button>
+        <button className=" bg-gradient-to-r rounded-3xl animate-background-animation from-cobal via-blue-400 to-cobal text-2xl  px-7 py-2">Contact</button>
       </div>
     </div>
   )
