@@ -1,7 +1,9 @@
+import GradientBall from "../ui/GradientBall";
+
 export default function Hero() {
   return (
     <div className="w-screen top-0 -z-1 sticky h-[80vh]">
-      <div className=" bg-amber-400 h-full flex w-full ">
+      <div className=" h-full flex w-full ">
         <div className=" w-1/2  flex flex-col items-center justify-center">
           <div>
             <h1 className="text-3xl" >From Concepts To Clicks</h1>
@@ -15,7 +17,7 @@ export default function Hero() {
         </div>
 
         <div className="w-1/2 " >
-          <h1>There will be a object</h1>
+          <GradientBall />
         </div>
       </div>
     </div>
