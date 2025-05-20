@@ -1,6 +1,6 @@
 "use client"
-import React from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -20,6 +20,7 @@ const fragmentShader = `
   varying vec3 vPosition;
   varying vec2 vUv;
   uniform vec3 pinkEraser; 
+  uniform float time;
 
   #define PI 3.1415926535897932384626433832795
 
@@ -104,28 +105,43 @@ const fragmentShader = `
   }
 
   void main() {
-    float n = noise(vec3(vUv, 0.0) * 7.0); 
-    vec3 color = pinkEraser * (0.5 + 0.5 * n); 
-    gl_FragColor = vec4(color, 1.0); 
+    float n = noise(vec3(vUv, time * 0.1) * 7.0); 
+    
+    vec3 color = pinkEraser * (0.5 + 0.5 * n) * (0.8 + 0.2 * sin(time * 0.5));
+    
+    gl_FragColor = vec4(color, 1.0);
   }
 `;
 
-const CustomShaderMaterial = new THREE.ShaderMaterial({
-  vertexShader,
-  fragmentShader,
-  uniforms : {
-      pinkEraser: { value: new THREE.Color(237/255, 163/255, 152/255) },
-  }
-});
 
 function App() {
+  function AnimatedSphere() {
+  const material = useRef(
+    new THREE.ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        time: { value: 0.0 },
+        pinkEraser: { value: new THREE.Color(237/255, 163/255, 152/255) },
+      }
+    })
+  );
+  
+  useFrame(({ clock }) => {
+    material.current.uniforms.time.value = clock.getElapsedTime();
+  });
+  
+  return (
+    <mesh material={material.current}>
+      <sphereGeometry args={[2, 16, 32]} />
+    </mesh>
+  );
+}
   return (
     <Canvas>
       <ambientLight />
       <OrbitControls />
-      <mesh material={CustomShaderMaterial}>
-        <sphereGeometry args={[2, 16, 32]} />
-      </mesh>
+      <AnimatedSphere />
     </Canvas>
   );
 }
