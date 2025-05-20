@@ -3,6 +3,10 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { useGSAP } from '@gsap/react';
+import gsap from "gsap"
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelected } from '../store/gsap/gsap';
 
 const vertexShader = `
   varying vec3 vPosition;
@@ -21,6 +25,7 @@ const fragmentShader = `
   varying vec2 vUv;
   uniform vec3 pinkEraser; 
   uniform float time;
+  uniform float opacity;
 
   #define PI 3.1415926535897932384626433832795
 
@@ -109,34 +114,72 @@ const fragmentShader = `
     
     vec3 color = pinkEraser * (0.5 + 0.5 * n) * (0.8 + 0.2 * sin(time * 0.5));
     
-    gl_FragColor = vec4(color, 1.0);
+    gl_FragColor = vec4(color, opacity);
   }
 `;
 
 
 function App() {
+  const selected = useSelector((state) => state.gsap.selected);
+  const dispatch = useDispatch();
+  
   function AnimatedSphere() {
-  const material = useRef(
-    new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader,
-      uniforms: {
-        time: { value: 0.0 },
-        pinkEraser: { value: new THREE.Color(237/255, 163/255, 152/255) },
+    const sphereRef = useRef();
+    const material = useRef(
+      new THREE.ShaderMaterial({
+        vertexShader,
+        fragmentShader,
+        uniforms: {
+          time: { value: 0.0 },
+          pinkEraser: { value: new THREE.Color(237/255, 163/255, 152/255) },
+          opacity : {value : 0.0}
+        },
+        transparent: true, 
+      })
+    );
+
+    useFrame(({ clock }) => {
+      material.current.uniforms.time.value = clock.getElapsedTime();
+    });
+    
+    useGSAP(() => {
+      console.log(selected)
+      if(selected == "1" || selected == undefined){
+
+      gsap.to(material.current.uniforms.opacity, {
+        value: 1,
+        duration: 1,
+        delay: 0.5,
+        onComplete: () => {
+          dispatch(setSelected("2"));
+        }
+      });
       }
-    })
-  );
+    },[])
+    useGSAP(() => {
+      if(selected === "3") {
+
+        gsap.set(sphereRef.current.scale, { x: 2.5/3.1, y: 2.5/3.1, z: 2.5/3.1 });
+        gsap.to(sphereRef.current.scale, {
+          x: 1, 
+          y: 1, 
+          z: 1, 
+          delay: 0.5,
+          duration: 0.8,
+          onComplete: () => {
+            dispatch(setSelected("4"));
+          }
+        });
+      }
+    }, [selected]); 
+    
+    return (
+      <mesh ref={sphereRef} material={material.current}>
+        <sphereGeometry args={[2.5, 32, 64]} />
+      </mesh>
+    );
+  }
   
-  useFrame(({ clock }) => {
-    material.current.uniforms.time.value = clock.getElapsedTime();
-  });
-  
-  return (
-    <mesh material={material.current}>
-      <sphereGeometry args={[3, 32, 64]} />
-    </mesh>
-  );
-}
   return (
     <Canvas>
       <ambientLight />
