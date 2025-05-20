@@ -133,7 +133,7 @@ function App() {
   
   return (
     <mesh material={material.current}>
-      <sphereGeometry args={[2, 16, 32]} />
+      <sphereGeometry args={[3, 32, 64]} />
     </mesh>
   );
 }
