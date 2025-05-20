@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selected: "1" 
+  selected: 1,
 };
 
 export const gsapSlice = createSlice({

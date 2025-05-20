@@ -11,7 +11,7 @@ export default function Header() {
   const selected = useSelector((state: RootState) => state.gsap.selected)
   const dispatch = useDispatch();
   useGSAP(() => {
-    if (selected == "4"){
+    if (selected == 4){
     gsap.set(headerRef.current, { y: -100, opacity: 0 });
     gsap.to(headerRef.current, {
       y: 0,
@@ -20,7 +20,7 @@ export default function Header() {
       ease: "power2.out"  
 
     });
-    dispatch(setSelected("5"));
+    dispatch(setSelected(5));
     }
   },[selected])
   const headerRef = useRef(null)
