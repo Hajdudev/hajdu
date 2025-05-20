@@ -17,10 +17,11 @@ export default function Header() {
       y: 0,
       opacity: 1,
       duration: 1.2,       
-      ease: "power2.out"  
-
+      ease: "power2.out",  
+      onComplete: () => {
+         dispatch(setSelected(5));
+      }
     });
-    dispatch(setSelected(5));
     }
   },[selected])
   const headerRef = useRef(null)
