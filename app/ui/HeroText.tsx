@@ -39,12 +39,12 @@ function HeroText () {
   return (
         <div className="w-1/2 flex flex-col font-lustria items-center justify-center">
           <div className="w-full ml-20">
-            <p ref={firstTextRef} className="text-6xl text-left">
+            <p ref={firstTextRef} className="text-6xl opacity-0 text-left">
               From Concepts To Clicks
             </p>
           </div>
           <div className="mt-5 w-full ml-20">
-            <p ref={secondTextRef} className="text-6xl font-bold text-left">
+            <p ref={secondTextRef} className="text-6xl opacity-0 font-bold text-left">
               We Build Websites That Drive Results
             </p>
           </div>

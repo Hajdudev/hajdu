@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -119,35 +119,21 @@ const fragmentShader = `
 `;
 
 
-function App() {
-  const selected = useSelector((state) => state.gsap.selected);
+function AnimatedSphere() {
+  const sphereRef = useRef();
+  const materialRef = useRef();
   const dispatch = useDispatch();
-  const [objectOpacity, setObjectOpacity] = useState(0.0)
-  
-  function AnimatedSphere() {
-    const sphereRef = useRef();
-    const material = useRef(
-      new THREE.ShaderMaterial({
-        vertexShader,
-        fragmentShader,
-        uniforms: {
-          time: { value: 0.0 },
-          pinkEraser: { value: new THREE.Color(237/255, 163/255, 152/255) },
-          opacity : {value : objectOpacity}
-        },
-        transparent: true, 
-      })
-    );
+  const selected = useSelector((state) => state.gsap.selected);
 
-    useFrame(({ clock }) => {
-      material.current.uniforms.time.value = clock.getElapsedTime();
-    });
-    
-    useGSAP(() => {
-      console.log(selected)
-      if(selected == 1 || selected == undefined){
+  useFrame(({ clock }) => {
+    if (materialRef.current) {
+      materialRef.current.uniforms.time.value = clock.getElapsedTime();
+    }
+  });
 
-      gsap.to(material.current.uniforms.opacity, {
+  useEffect(() => {
+    if (selected === 1 || selected === undefined) {
+      gsap.to(materialRef.current.uniforms.opacity, {
         value: 1,
         duration: 1,
         delay: 0.5,
@@ -155,32 +141,48 @@ function App() {
           dispatch(setSelected(2));
         }
       });
-      }
-    },[])
-    useGSAP(() => {
-      if(selected === 3) {
+    }
+  }, [selected]);
 
-        gsap.set(sphereRef.current.scale, { x: 2.5/3.1, y: 2.5/3.1, z: 2.5/3.1 });
-        gsap.to(sphereRef.current.scale, {
-          x: 1, 
-          y: 1, 
-          z: 1, 
-          delay: 0.5,
-          duration: 0.8,
-          onComplete: () => {
-            dispatch(setSelected(4));
-          }
-        });
-      }
-    }, [selected]); 
-    
-    return (
-      <mesh ref={sphereRef} material={material.current}>
-        <sphereGeometry args={[2.5, 32, 64]} />
-      </mesh>
-    );
-  }
-  
+  useGSAP(() => {
+    if (selected === 3) {
+      gsap.set(sphereRef.current.scale, {
+        x: 2.5 / 3.1,
+        y: 2.5 / 3.1,
+        z: 2.5 / 3.1
+      });
+      gsap.to(sphereRef.current.scale, {
+        x: 1,
+        y: 1,
+        z: 1,
+        delay: 0.5,
+        duration: 0.8,
+        onComplete: () => {
+          dispatch(setSelected(4));
+        }
+      });
+    }
+  }, [selected]);
+
+  return (
+    <mesh ref={sphereRef}>
+      <sphereGeometry args={[2.5, 32, 64]} />
+      <shaderMaterial
+        ref={materialRef}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uniforms={{
+          time: { value: 0.0 },
+          pinkEraser: { value: new THREE.Color(237 / 255, 163 / 255, 152 / 255) },
+          opacity: { value: 0.0 }
+        }}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+export default function App() {
   return (
     <Canvas>
       <ambientLight />
@@ -189,5 +191,3 @@ function App() {
     </Canvas>
   );
 }
-
-export default App;
