@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -122,6 +122,7 @@ const fragmentShader = `
 function App() {
   const selected = useSelector((state) => state.gsap.selected);
   const dispatch = useDispatch();
+  const [objectOpacity, setObjectOpacity] = useState(0.0)
   
   function AnimatedSphere() {
     const sphereRef = useRef();
@@ -132,7 +133,7 @@ function App() {
         uniforms: {
           time: { value: 0.0 },
           pinkEraser: { value: new THREE.Color(237/255, 163/255, 152/255) },
-          opacity : {value : 0.0}
+          opacity : {value : objectOpacity}
         },
         transparent: true, 
       })
@@ -144,20 +145,20 @@ function App() {
     
     useGSAP(() => {
       console.log(selected)
-      if(selected == "1" || selected == undefined){
+      if(selected == 1 || selected == undefined){
 
       gsap.to(material.current.uniforms.opacity, {
         value: 1,
         duration: 1,
         delay: 0.5,
         onComplete: () => {
-          dispatch(setSelected("2"));
+          dispatch(setSelected(2));
         }
       });
       }
     },[])
     useGSAP(() => {
-      if(selected === "3") {
+      if(selected === 3) {
 
         gsap.set(sphereRef.current.scale, { x: 2.5/3.1, y: 2.5/3.1, z: 2.5/3.1 });
         gsap.to(sphereRef.current.scale, {
@@ -167,7 +168,7 @@ function App() {
           delay: 0.5,
           duration: 0.8,
           onComplete: () => {
-            dispatch(setSelected("4"));
+            dispatch(setSelected(4));
           }
         });
       }
