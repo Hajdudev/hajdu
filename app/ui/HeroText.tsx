@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelected } from "../store/gsap/gsap";
 import { RootState } from "../store/store";
 
-function HeroText () {
+function HeroText() {
 
   const dispatch = useDispatch();
   const selected = useSelector((state: RootState) => state.gsap.selected);
@@ -37,21 +37,21 @@ function HeroText () {
   }, [selected]);
 
   return (
-        <div className="w-1/2 flex flex-col font-lustria items-center justify-center">
-          <div className="w-full ml-20">
-            <p ref={firstTextRef} className="text-6xl opacity-0 text-left">
-              From Concepts To Clicks
-            </p>
-          </div>
-          <div className="mt-5 w-full ml-20">
-            <p ref={secondTextRef} className="text-6xl opacity-0 font-bold text-left">
-              We Build Websites That Drive Results
-            </p>
-          </div>
-          <button className="bg-cobal self-start ml-10 px-6 py-3 mt-8 rounded-full text-white">
-            Contact Us
-          </button>
-        </div>
+    <div className="w-1/2 flex ml-30 flex-col font-lustria items-center justify-center">
+      <div className="w-full ">
+        <p ref={firstTextRef} className="text-6xl opacity-0 text-left">
+          From Concepts To Clicks
+        </p>
+      </div>
+      <div className="mt-5 w-full ">
+        <p ref={secondTextRef} className="text-6xl opacity-0 text-left">
+          We Build Websites That Drive Results
+        </p>
+      </div>
+      <button className="bg-cobal self-start px-6 py-3 mt-8 rounded-full text-white">
+        Contact Us
+      </button>
+    </div>
   )
 }
 
