@@ -1,5 +1,6 @@
 import GradientBall from "../ui/GradientBall";
 import HeroText from "../ui/HeroText";
+import HeroTextSub from "../ui/HeroTextSub";
 export default function Hero() {
   return (
     <div id="hero" className="w-screen top-0 sticky h-[80vh]  -z-1">
@@ -9,6 +10,7 @@ export default function Hero() {
 
       <div className="h-full flex w-full relative z-10">
         <HeroText />
+        <HeroTextSub />
       </div>
     </div>
   );

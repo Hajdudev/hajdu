@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F9F6EF;
+  --background: #f9f6ef;
   --foreground: #282828;
   --pink-eraser: #eda398;
-  --paper: #F9F6EF;
+  --paper: #f9f6ef;
   --cobal: #193497;
-  --ink:  #282828;
+  --ink: #282828;
 }
 
 @theme inline {
@@ -19,7 +19,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-rubic-mono: var(--font-rubic-mono-one);
-  --font-lustria : var(--font-lustria);
+  --font-lustria: var(--font-lustria);
+  --font-babas-neue: var(--font-babas-neue);
 }
 @theme {
   --animate-background-animation: background-animation 2s linear infinite;
@@ -37,7 +38,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #282828;
-    --foreground: #F9F6EF;
+    --foreground: #f9f6ef;
   }
 }
 
