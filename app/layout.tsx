@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Lustria, Rubik_Mono_One } from "next/font/google";
+import {
+  Bebas_Neue,
+  Geist,
+  Geist_Mono,
+  Lustria,
+  Rubik_Mono_One,
+} from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import StoreProvider from "./store/StoreProvider";
 
+const babasNeue = Bebas_Neue({
+  variable: "--font-babas-neue",
+  subsets: ["latin"],
+  weight: "400",
+});
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,13 +28,13 @@ const geistMono = Geist_Mono({
 const lustria = Lustria({
   variable: "--font-lustria",
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
 });
 
 const rubicMono = Rubik_Mono_One({
   variable: "--font-rubic-mono-one",
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${lustria.variable} ${rubicMono.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${babasNeue.variable} ${lustria.variable} ${rubicMono.variable} ${geistMono.variable} antialiased`}
       >
         <StoreProvider>
           <Header />

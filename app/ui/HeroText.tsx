@@ -55,13 +55,16 @@ function HeroText() {
         </p>
       </div>
       <div className="mt-5 w-full ">
-        <p ref={secondTextRef} className="text-6xl opacity-0 text-left">
+        <p
+          ref={secondTextRef}
+          className="text-6xl ml-10 font-semibold opacity-0 text-left"
+        >
           We Build Websites That Drive Results
         </p>
       </div>
       <button
         ref={buttonRef}
-        className="bg-pink-eraser opacity-0 self-start px-6 py-3 mt-8 rounded-full text-white"
+        className="bg-pink-eraser ml-15 opacity-0 self-start px-5 font-babas-neue py-2 mt-8 rounded-2xl text-3xl  text-white"
       >
         Contact Us
       </button>
