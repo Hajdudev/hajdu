@@ -23,7 +23,7 @@ const vertexShader = `
 const fragmentShader = `
   varying vec3 vPosition;
   varying vec2 vUv;
-  uniform vec3 pinkEraser; 
+  uniform vec3 Cobalt; 
   uniform float time;
   uniform float opacity;
 
@@ -110,9 +110,9 @@ const fragmentShader = `
   }
 
   void main() {
-    float n = noise(vec3(vUv, time * 0.1) * 7.0); 
+    float n = noise(vec3(vUv, time * 0.1) * 9.0); 
     
-    vec3 color = pinkEraser * (0.5 + 0.5 * n) * (0.8 + 0.2 * sin(time * 0.5));
+    vec3 color = Cobalt * (0.5 + 0.5 * n) * (0.8 + 0.2 * sin(time * 0.5));
     
     gl_FragColor = vec4(color, opacity);
   }
@@ -121,6 +121,11 @@ const fragmentShader = `
 
 function AnimatedSphere() {
   const sphereRef = useRef();
+  const uniforms = useRef({
+    time: { value: 0.0 },
+    Cobalt: { value: new THREE.Color(25 / 255, 52 / 255, 151 / 255) },
+    opacity: { value: 0.0 }
+  });
   const materialRef = useRef();
   const dispatch = useDispatch();
   const selected = useSelector((state) => state.gsap.selected);
@@ -146,15 +151,11 @@ function AnimatedSphere() {
 
   useGSAP(() => {
     if (selected === 3) {
-      gsap.set(sphereRef.current.scale, {
-        x: 2.5 / 3.1,
-        y: 2.5 / 3.1,
-        z: 2.5 / 3.1
-      });
       gsap.to(sphereRef.current.scale, {
-        x: 1,
-        y: 1,
-        z: 1,
+        x: 1 * (3.1 / 2.5),
+        y: 1 * (3.1 / 2.5),
+        z: 1 * (3.1 / 2.5),
+
         delay: 0.5,
         duration: 0.8,
         onComplete: () => {
@@ -171,11 +172,7 @@ function AnimatedSphere() {
         ref={materialRef}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
-        uniforms={{
-          time: { value: 0.0 },
-          pinkEraser: { value: new THREE.Color(237 / 255, 163 / 255, 152 / 255) },
-          opacity: { value: 0.0 }
-        }}
+        uniforms={uniforms.current}
         transparent
       />
     </mesh>
