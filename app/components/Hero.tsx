@@ -2,7 +2,10 @@ import GradientBall from "../ui/GradientBall";
 import HeroText from "../ui/HeroText";
 export default function Hero() {
   return (
-    <div className="w-screen top-0 sticky h-[80vh] overflow-hidden -z-1">
+    <div
+      id="hero"
+      className="w-screen top-0 sticky h-[80vh] overflow-hidden -z-1"
+    >
       <div className="absolute right-0 -bottom-50 w-full h-screen -z-10">
         <GradientBall />
       </div>
