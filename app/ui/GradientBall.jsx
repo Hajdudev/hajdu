@@ -7,6 +7,9 @@ import { useGSAP } from '@gsap/react';
 import gsap from "gsap"
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelected } from '../store/gsap/gsap';
+import { Observer } from 'gsap/Observer';
+
+gsap.registerPlugin(Observer)
 
 const vertexShader = `
   varying vec3 vPosition;
@@ -120,6 +123,35 @@ const fragmentShader = `
 
 
 function AnimatedSphere() {
+
+
+  useGSAP(() => {
+
+    let lastScale = 1;
+
+    Observer.create({
+      target: window,
+      type: "scroll",
+      onChangeY: () => {
+        if (lastScale <= 1.38) {
+          let scrollY = window.scrollY || window.pageYOffset;
+          let newScale = 1 + Math.min(scrollY / 300, 2);
+          if (Math.abs(newScale - lastScale) > 0.01) {
+            gsap.to(sphereRef.current.scale, {
+              x: newScale,
+              y: newScale,
+              z: newScale,
+              duration: 0.3,
+              overwrite: true,
+              ease: "power1.out",
+            });
+            lastScale = newScale;
+            console.log(newScale)
+          }
+        }
+      },
+    });
+  }, [])
   const sphereRef = useRef();
   const uniforms = useRef({
     time: { value: 0.0 },
