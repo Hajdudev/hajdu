@@ -8,14 +8,7 @@ import { RootState } from "./store/store";
 
 export default function Home() {
   const selected = useSelector((state: RootState) => state.gsap.selected);
-  useEffect(() => {
-    if (selected == 5) {
-      document.body.style.overflow = "auto";
-    } else {
-      document.body.style.overflow = "hidden";
-      document.body.setAttribute("data-lenis-prevent", "true");
-    }
-  }, [selected]);
+
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time: number) {
@@ -23,7 +16,16 @@ export default function Home() {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-  });
+  }, []);
+  useEffect(() => {
+    if (selected == 4) {
+      document.body.style.overflow = "auto";
+      document.body.removeAttribute("data-lenis-prevent");
+    } else {
+      document.body.style.overflow = "hidden";
+      document.body.setAttribute("data-lenis-prevent", "true");
+    }
+  }, [selected]);
   return (
     <div>
       <Hero />

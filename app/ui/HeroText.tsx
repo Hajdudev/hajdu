@@ -1,16 +1,16 @@
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import gsap from "gsap"
+import gsap from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelected } from "../store/gsap/gsap";
 import { RootState } from "../store/store";
 
 function HeroText() {
-
   const dispatch = useDispatch();
   const selected = useSelector((state: RootState) => state.gsap.selected);
   const firstTextRef = useRef(null);
   const secondTextRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useGSAP(() => {
     if (selected === 2) {
@@ -34,10 +34,21 @@ function HeroText() {
         });
       }
     }
+    if (selected === 3) {
+      gsap.set(buttonRef.current, {
+        x: -25,
+        opacity: 0,
+      });
+      gsap.to(buttonRef.current, {
+        x: 0,
+        duration: 0.8,
+        opacity: 1,
+      });
+    }
   }, [selected]);
 
   return (
-    <div className="w-1/2 flex ml-30 flex-col font-lustria items-center justify-center">
+    <div className="w-1/2 pt-20 flex ml-30 flex-col font-lustria items-center justify-center">
       <div className="w-full ">
         <p ref={firstTextRef} className="text-6xl opacity-0 text-left">
           From Concepts To Clicks
@@ -48,11 +59,14 @@ function HeroText() {
           We Build Websites That Drive Results
         </p>
       </div>
-      <button className="bg-cobal self-start px-6 py-3 mt-8 rounded-full text-white">
+      <button
+        ref={buttonRef}
+        className="bg-pink-eraser opacity-0 self-start px-6 py-3 mt-8 rounded-full text-white"
+      >
         Contact Us
       </button>
     </div>
-  )
+  );
 }
 
-export default HeroText
+export default HeroText;

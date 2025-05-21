@@ -21,7 +21,7 @@ export default function Header() {
         duration: 1.2,
         ease: "power2.out",
         onComplete: () => {
-          dispatch(setSelected(5));
+          dispatch(setSelected(4));
         },
       });
     }
