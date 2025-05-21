@@ -4,6 +4,8 @@ export default function Services() {
       <div className="h-[20vh] font-rubic-mono flex justify-center items-end text-9xl w-full">
         <h1>OUR SERVICES</h1>
       </div>
+      <div id="services" className="h-[80vh] w-full bg-amber-50">
+      </div>
     </div>
   )
 }
