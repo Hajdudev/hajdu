@@ -22,7 +22,7 @@
   --font-lustria : var(--font-lustria);
 }
 @theme {
-  --animate-background-animation: background-animation 1s linear infinite;
+  --animate-background-animation: background-animation 2s linear infinite;
 
   @keyframes background-animation {
     0% {
