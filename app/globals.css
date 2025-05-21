@@ -22,13 +22,14 @@
   --font-lustria : var(--font-lustria);
 }
 @theme {
-  --animate-background-animation: fade-in-scale 0.3s ease-out;
+  --animate-background-animation: background-animation 1s linear infinite;
+
   @keyframes background-animation {
-    0%{
+    0% {
       background-position: 0% 50%;
     }
-    50%{
-      background-position: 50% 100%;
+    100% {
+      background-position: 100% 50%;
     }
   }
 }

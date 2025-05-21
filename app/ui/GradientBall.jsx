@@ -141,7 +141,6 @@ function AnimatedSphere() {
       gsap.to(materialRef.current.uniforms.opacity, {
         value: 1,
         duration: 1,
-        delay: 0.5,
         onComplete: () => {
           dispatch(setSelected(2));
         }
@@ -156,7 +155,6 @@ function AnimatedSphere() {
         y: 1 * (3.1 / 2.5),
         z: 1 * (3.1 / 2.5),
 
-        delay: 0.5,
         duration: 0.8,
         onComplete: () => {
           dispatch(setSelected(4));
