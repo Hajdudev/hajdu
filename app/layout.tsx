@@ -4,11 +4,19 @@ import {
   Geist,
   Geist_Mono,
   Lustria,
+  Notable,
   Rubik_Mono_One,
 } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import StoreProvider from "./store/StoreProvider";
+
+const notable = Notable({
+  variable: "--font-notable",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 const babasNeue = Bebas_Neue({
   variable: "--font-babas-neue",
@@ -54,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${babasNeue.variable} ${lustria.variable} ${rubicMono.variable} ${geistMono.variable} antialiased`}
+        className={` ${notable.variable} ${geistSans.variable} ${babasNeue.variable} ${lustria.variable} ${rubicMono.variable} ${geistMono.variable} antialiased`}
       >
         <StoreProvider>
           <Header />
