@@ -32,7 +32,7 @@ export default function Header() {
       id="header"
       className="w-screen opacity-0 fixed z-10 flex justify-between items-center px-16 py-4 h-auto"
     >
-      <div className="flex justify-center items-center">
+      <div className="flex justify-start w-1/3 items-center">
         <div className="w-16 h-16 relative">
           <svg
             version="1.0"
@@ -72,10 +72,12 @@ export default function Header() {
         </div>
         <span className="font-bold text-3xl font-babas-neue">Hajdu</span>
       </div>
-      <div className="flex gap-13 justify-between items-center">
+      <div className="flex gap-13 justify-center w-1/3 items-center">
         <span className="text-xl text-paper/80">About</span>
         <span className="text-xl text-paper/80">Services</span>
         <span className="text-xl text-paper/80">Pricing</span>
+      </div>
+      <div className="flex gap-13 w-1/3 justify-end items-center">
         <button className="bg-gradient-to-r animate-background-animation from-cobal via-blue-400 to-cobal rounded-3xl text-2xl px-7 py-2 [background-size:200%_200%] ">
           Contact
         </button>

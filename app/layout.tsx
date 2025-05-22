@@ -14,10 +14,12 @@ const babasNeue = Bebas_Neue({
   variable: "--font-babas-neue",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -29,12 +31,14 @@ const lustria = Lustria({
   variable: "--font-lustria",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 const rubicMono = Rubik_Mono_One({
   variable: "--font-rubic-mono-one",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
