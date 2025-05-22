@@ -3,10 +3,25 @@ import gsap from "gsap";
 import { RootState } from "../store/store";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import Image from "next/image";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Services() {
   const selected = useSelector((state: RootState) => state.gsap.selected);
   const serviceRef = useRef(null);
+  const objectRef = useRef(null);
+  useGSAP(() => {
+    gsap.to(objectRef.current, {
+      scrollTrigger: {
+        scrub: true,
+        pin: true,
+        trigger: objectRef.current,
+        start: "top center",
+      },
+      rotation: 360,
+    });
+  });
 
   useGSAP(() => {
     if (selected === 3) {
@@ -34,11 +49,22 @@ export default function Services() {
         </h1>
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-cobal rounded-full"></div>
       </div>
-      <div id="services" className="h-auto w-full flex">
-        <div className="w-1/2 h-full "></div>
+      <div id="services" className="h-[200vh] w-full flex">
+        <div className="w-1/2 flex justify-center  h-full ">
+          <div className="w-46 h-46 relative">
+            <Image
+              ref={objectRef}
+              alt="services objects"
+              src="/images/molecule.svg"
+              className="z-20"
+              fill
+              sizes="cover"
+            />
+          </div>
+        </div>
         <div className="flex flex-col gap-56 p-10 w-1/2 h-full text-paper">
           <div className="w-full">
-            <h1 className="font-notable text-3xl mb-4">
+            <h1 className="font-notable text-3xl text-pink-eraser mb-4">
               Visual Storytelling That Resonates
             </h1>
             <p className="max-w-152 text-xl font-semibold leading-relaxed">
@@ -52,7 +78,7 @@ export default function Services() {
             </p>
           </div>
           <div className="w-full">
-            <h1 className="font-notable text-3xl mb-4">
+            <h1 className="text-pink-eraser font-notable text-3xl mb-4">
               Your Vision, Our Guidance, Seamless Results
             </h1>
             <p className="max-w-152 text-xl font-semibold leading-relaxed">
@@ -66,7 +92,7 @@ export default function Services() {
             </p>
           </div>
           <div className="w-full">
-            <h1 className="font-notable text-3xl mb-4">
+            <h1 className="font-notable text-pink-eraser text-3xl mb-4">
               High-Performance Websites, Built for Speed & Reliability
             </h1>
             <p className="max-w-152 text-xl font-semibold leading-relaxed">
