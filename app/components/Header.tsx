@@ -73,7 +73,9 @@ export default function Header() {
         <span className="font-bold text-3xl font-babas-neue">Hajdu</span>
       </div>
       <div className="flex gap-13 justify-center w-1/3 items-center">
-        <span className="text-xl text-paper/80">About</span>
+        <span className="text-xl text-paper/80" onDragOver={() => {}}>
+          About
+        </span>
         <span className="text-xl text-paper/80">Services</span>
         <span className="text-xl text-paper/80">Pricing</span>
       </div>
