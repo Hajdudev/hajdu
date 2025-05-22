@@ -22,10 +22,10 @@ export default function Services() {
   return (
     <div
       ref={serviceRef}
-      className="h-[100vh] opacity-0 rounded-t-2xl w-full bg-black "
+      className="h-[100vh] opacity-0 rounded-t-2xl w-full "
     >
-      <div className="h-[20vh] font-rubic-mono relative flex justify-center items-end text-9xl w-full">
-        <h1 className="font-rubic-mono text-9xl text-shadow-lg bg-gradient-to-b from-gray-500 to-black text-transparent bg-clip-text">
+      <div className="h-[20vh] font-rubic-mono relative flex justify-center items-center text-9xl w-full">
+        <h1 className="text-9xl">
           OUR SERVICES
         </h1>
       </div>
