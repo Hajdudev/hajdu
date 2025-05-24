@@ -3,71 +3,54 @@ import gsap from "gsap";
 import { RootState } from "../store/store";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function Services() {
   const selected = useSelector((state: RootState) => state.gsap.selected);
-  const serviceRef = useRef(null);
-  const objectRef = useRef(null);
+  const serviceRef = useRef<HTMLDivElement | null>(null);
+  const objectRef = useRef<HTMLDivElement | null>(null);
+
   useGSAP(() => {
     gsap.to(objectRef.current, {
       scrollTrigger: {
-        scrub: true,
-        pin: true,
-        trigger: objectRef.current,
-        start: "top center",
+        trigger: serviceRef.current,
+        start: "top top",
+        end: "bottom center",
+        pin: objectRef.current,
+        scrub: 1,
+        markers: true, // Remove this on production
       },
       rotation: 360,
     });
-  });
-
-  useGSAP(() => {
-    if (selected === 3) {
-      gsap.set(serviceRef.current, {
-        y: 100,
-        opacity: 0,
-      });
-      gsap.to(serviceRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: "power3.out",
-      });
-    }
-  }, [selected]);
+  }, []);
 
   return (
-    <div
-      ref={serviceRef}
-      className="h-auto opacity-0 rounded-t-3xl  flex-col w-full bg-paper/5 backdrop-blur-md relative overflow-hidden flex" // Added flex
-    >
-      <div className="h-[20vh] font-rubic-mono sticky top-0 flex justify-center items-center w-full">
-        <h1 className="text-8xl lg:text-9xl text-pink-eraser font-bold text-center mt-5 tracking-tight leading-none">
-          OUR SOLUTIONS
-        </h1>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-cobal rounded-full"></div>
-      </div>
-      <div id="services" className="h-[200vh] w-full flex">
-        <div className="w-1/2 flex justify-center  h-full ">
-          <div className="w-46 h-46 relative">
-            <Image
-              ref={objectRef}
-              alt="services objects"
-              src="/images/molecule.svg"
-              className="z-20"
-              fill
-              sizes="cover"
-            />
-          </div>
+    <div className="min-h-[220vh] w-full bg-slate-100 flex flex-col">
+      {/* Header Section */}
+      <div className="h-[20vh] font-rubic-mono sticky top-0 flex justify-center items-center w-full z-10 bg-white/10 backdrop-blur-lg">
+        <div className="relative w-full">
+          <h1 className="text-8xl lg:text-9xl text-pink-eraser font-bold text-center mt-5 tracking-tight leading-none">
+            OUR SOLUTIONS
+          </h1>
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-cobal rounded-full"></div>
         </div>
-        <div className="flex flex-col gap-56 p-10 w-1/2 h-full text-paper">
+      </div>
+      {/* Main Scroll Section */}
+      <div
+        ref={serviceRef}
+        id="services"
+        className="h-[200vh] w-full flex"
+      >
+        <div className="w-1/2 flex justify-center  h-full">
+          <div ref={objectRef} className="w-44 h-44 bg-black relative"></div>
+        </div>
+        <div className="w-1/2 h-full flex flex-col gap-56 p-10 text-paper">
           <div className="w-full">
             <h1 className="font-notable text-3xl text-pink-eraser mb-4">
               Visual Storytelling That Resonates
             </h1>
-            <p className="max-w-152 text-xl font-semibold leading-relaxed">
+            <p className="max-w-2xl text-xl font-semibold leading-relaxed">
               Imagine a website so visually stunning, so engaging, that it
               leaves a lasting impression on every visitor. We craft custom
               websites that go beyond the ordinary, incorporating captivating
@@ -81,7 +64,7 @@ export default function Services() {
             <h1 className="text-pink-eraser font-notable text-3xl mb-4">
               Your Vision, Our Guidance, Seamless Results
             </h1>
-            <p className="max-w-152 text-xl font-semibold leading-relaxed">
+            <p className="max-w-2xl text-xl font-semibold leading-relaxed">
               We understand that building a website is a journey. That&apos;s
               why we prioritize a collaborative partnership, guiding you through
               every step of the process. We listen intently to your vision,
@@ -95,7 +78,7 @@ export default function Services() {
             <h1 className="font-notable text-pink-eraser text-3xl mb-4">
               High-Performance Websites, Built for Speed & Reliability
             </h1>
-            <p className="max-w-152 text-xl font-semibold leading-relaxed">
+            <p className="max-w-2xl text-xl font-semibold leading-relaxed">
               In today&apos;s fast-paced digital world, speed and reliability
               are paramount. We leverage the latest web technologies to build
               websites that are not only visually impressive but also
