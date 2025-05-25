@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import gsap from "gsap";
 import { RootState } from "../store/store";
 import { useGSAP } from "@gsap/react";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -10,40 +10,7 @@ export default function Services() {
   const selected = useSelector((state: RootState) => state.gsap.selected);
   const serviceRef = useRef(null);
   const objectRef = useRef(null);
-  const textRefOne = useRef(null);
-  const textRefTwo = useRef(null);
-  const textRefThree = useRef(null);
-  const textRef = useRef(null);
-  const tl = useMemo(() => gsap.timeline(), []);
   const sectionRef = useRef(null);
-  useGSAP(() => {
-    tl.to(textRefOne.current, {
-      scrollTrigger: {
-        trigger: textRefOne.current,
-        start: "top top",
-        endTrigger: textRefTwo.current,
-        end: "top center",
-        markers: true,
-      },
-    });
-    tl.to(textRefTwo.current, {
-      scrollTrigger: {
-        trigger: textRefTwo.current,
-        start: "top top",
-        endTrigger: textRefThree.current,
-        end: "top center",
-        markers: true,
-      },
-    });
-    tl.to(textRefThree.current, {
-      scrollTrigger: {
-        trigger: textRefThree.current,
-        start: "top top",
-        end: "bottom center",
-        markers: true,
-      },
-    });
-  });
 
   useGSAP(() => {
     gsap.to(objectRef.current, {
@@ -92,13 +59,10 @@ export default function Services() {
         className="h-[200vh] w-full bg-[#0f0f0f]  flex"
       >
         <div className="w-1/2 flex justify-center  h-[80vh] items-center">
-          <div ref={objectRef} className="w-44 h-44 bg-black relative"></div>
+          <div ref={objectRef} className=" w-44 h-44 bg-black relative"></div>
         </div>
-        <div
-          ref={textRef}
-          className="w-1/2 relative h-full flex flex-col gap-56 p-10 text-paper"
-        >
-          <div ref={textRefOne} className=" sticky w-full left-0 top-1/3  ">
+        <div className="w-1/2 relative h-full flex flex-col gap-56 p-10 text-paper">
+          <div className=" sticky w-full left-0 top-1/3  ">
             <h1 className="font-notable text-3xl text-pink-eraser mb-4">
               Visual Storytelling That Resonates
             </h1>
@@ -112,7 +76,7 @@ export default function Services() {
               and drive business growth.
             </p>
           </div>
-          <div ref={textRefTwo} className=" sticky w-full left-0 top-1/3  ">
+          <div className=" sticky w-full left-0 top-1/3  ">
             <h1 className="text-pink-eraser font-notable text-3xl mb-4">
               Your Vision, Our Guidance, Seamless Results
             </h1>
@@ -126,7 +90,7 @@ export default function Services() {
               maximizing your online potential.
             </p>
           </div>
-          <div ref={textRefThree} className=" sticky w-full left-0 top-1/3  ">
+          <div className=" sticky w-full left-0 top-1/3  ">
             <h1 className="font-notable text-pink-eraser text-3xl mb-4">
               High-Performance Websites, Built for Speed & Reliability
             </h1>
