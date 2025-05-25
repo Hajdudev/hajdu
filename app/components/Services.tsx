@@ -8,8 +8,9 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function Services() {
   const selected = useSelector((state: RootState) => state.gsap.selected);
-  const serviceRef = useRef<HTMLDivElement | null>(null);
-  const objectRef = useRef<HTMLDivElement | null>(null);
+  const serviceRef = useRef(null);
+  const objectRef = useRef(null);
+  const sectionRef = useRef(null)
 
   useGSAP(() => {
     gsap.to(objectRef.current, {
@@ -24,11 +25,25 @@ export default function Services() {
       rotation: 360,
     });
   }, []);
+  useGSAP(() => {
+    if (selected === 3) {
+      gsap.set(sectionRef.current, {
+        y: 100,
+        opacity: 0,
+      });
+      gsap.to(sectionRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power3.out",
+      });
+    }
+  }, [selected]);
 
   return (
-    <div className="min-h-[220vh] bg-[#0f0f0f] flex flex-col">
-      <div className="h-[20vh] font-rubic-mono  flex justify-center items-center w-full z-10 ">
-        <div className="relative w-full">
+    <div className="min-h-[220vh]   flex flex-col">
+      <div ref={sectionRef} className="h-[20vh] font-rubic-mono opacity-0 bg-[#0f0f0f] flex justify-center items-center w-full z-10 ">
+        <div className="relative  w-full">
           <h1 className="text-8xl lg:text-9xl text-pink-eraser font-bold text-center mt-5 tracking-tight leading-none">
             OUR SOLUTIONS
           </h1>
@@ -38,7 +53,7 @@ export default function Services() {
       <div
         ref={serviceRef}
         id="services"
-        className="h-[200vh] w-full flex"
+        className="h-[200vh] w-full bg-[#0f0f0f]  flex"
       >
         <div className="w-1/2 flex justify-center  h-full">
           <div ref={objectRef} className="mt-20 w-44 h-44 bg-black relative"></div>
