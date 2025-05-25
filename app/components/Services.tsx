@@ -16,34 +16,40 @@ export default function Services() {
   const textRef = useRef(null);
   const tl = useMemo(() => gsap.timeline(), []);
   const sectionRef = useRef(null);
-  useGSAP(() => {
-    tl.to(textRefOne.current, {
-      scrollTrigger: {
-        trigger: textRefOne.current,
-        start: "top top",
-        endTrigger: textRefTwo.current,
-        end: "top center",
-        markers: true,
-      },
-    });
-    tl.to(textRefTwo.current, {
-      scrollTrigger: {
-        trigger: textRefTwo.current,
-        start: "top top",
-        endTrigger: textRefThree.current,
-        end: "top center",
-        markers: true,
-      },
-    });
-    tl.to(textRefThree.current, {
-      scrollTrigger: {
-        trigger: textRefThree.current,
-        start: "top top",
-        end: "bottom center",
-        markers: true,
-      },
-    });
-  });
+  useGSAP(
+    () => {
+      tl.to(textRefOne.current, {
+        scrollTrigger: {
+          trigger: textRefOne.current,
+          start: "top top",
+          endTrigger: textRefTwo.current,
+          end: "top center",
+          markers: true,
+        },
+        opacity: 0,
+      });
+      tl.to(textRefTwo.current, {
+        scrollTrigger: {
+          trigger: textRefTwo.current,
+          start: "top center",
+          endTrigger: textRefThree.current,
+          end: "top center",
+          markers: true,
+        },
+        opacity: 0,
+      });
+      tl.to(textRefThree.current, {
+        scrollTrigger: {
+          trigger: textRefThree.current,
+          start: "top center",
+          end: "bottom center",
+          markers: true,
+        },
+        opacity: 0,
+      });
+    },
+    { dependencies: [textRefOne, textRefTwo, textRefThree] },
+  );
 
   useGSAP(() => {
     gsap.to(objectRef.current, {

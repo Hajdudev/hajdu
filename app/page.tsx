@@ -30,6 +30,7 @@ export default function Home() {
     <div>
       <Hero />
       <Services />
+      <div className="w-screen h-screen bg-green-200"></div>
     </div>
   );
 }
