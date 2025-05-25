@@ -19,16 +19,15 @@ export default function Services() {
         end: "bottom center",
         pin: objectRef.current,
         scrub: 1,
-        markers: true, // Remove this on production
+        markers: true,
       },
       rotation: 360,
     });
   }, []);
 
   return (
-    <div className="min-h-[220vh] w-full bg-slate-100 flex flex-col">
-      {/* Header Section */}
-      <div className="h-[20vh] font-rubic-mono sticky top-0 flex justify-center items-center w-full z-10 bg-white/10 backdrop-blur-lg">
+    <div className="min-h-[220vh] bg-[#0f0f0f] flex flex-col">
+      <div className="h-[20vh] font-rubic-mono  flex justify-center items-center w-full z-10 ">
         <div className="relative w-full">
           <h1 className="text-8xl lg:text-9xl text-pink-eraser font-bold text-center mt-5 tracking-tight leading-none">
             OUR SOLUTIONS
@@ -36,14 +35,13 @@ export default function Services() {
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-cobal rounded-full"></div>
         </div>
       </div>
-      {/* Main Scroll Section */}
       <div
         ref={serviceRef}
         id="services"
         className="h-[200vh] w-full flex"
       >
         <div className="w-1/2 flex justify-center  h-full">
-          <div ref={objectRef} className="w-44 h-44 bg-black relative"></div>
+          <div ref={objectRef} className="mt-20 w-44 h-44 bg-black relative"></div>
         </div>
         <div className="w-1/2 h-full flex flex-col gap-56 p-10 text-paper">
           <div className="w-full">
