@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import gsap from "gsap";
 import { RootState } from "../store/store";
 import { useGSAP } from "@gsap/react";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -14,49 +14,71 @@ export default function Services() {
   const textRefTwo = useRef(null);
   const textRefThree = useRef(null);
   const textRef = useRef(null);
-  const tl = useMemo(() => gsap.timeline(), []);
   const sectionRef = useRef(null);
-  useGSAP(
-    () => {
-      tl.to(textRefOne.current, {
-        scrollTrigger: {
-          trigger: textRefOne.current,
-          start: "top top",
-          endTrigger: textRefTwo.current,
-          end: "top center",
-          markers: true,
-        },
-        opacity: 0,
-      });
-      tl.to(textRefTwo.current, {
+
+  useGSAP(() => {
+    gsap.to(textRefOne.current, {
+      scrollTrigger: {
+        trigger: textRefOne.current,
+        start: "top top",
+        endTrigger: textRefTwo.current,
+        end: "top center",
+        markers: true,
+        scrub: 1,
+      },
+      opacity: 0,
+    });
+
+    gsap.fromTo(
+      textRefTwo.current,
+      { opacity: 0 },
+      {
         scrollTrigger: {
           trigger: textRefTwo.current,
           start: "top center",
-          endTrigger: textRefThree.current,
-          end: "top center",
+          end: "center center",
           markers: true,
+          scrub: 1,
         },
-        opacity: 0,
-      });
-      tl.to(textRefThree.current, {
+        opacity: 1,
+        immediateRender: false,
+      }
+    );
+
+    gsap.to(textRefTwo.current, {
+      scrollTrigger: {
+        trigger: textRefThree.current,
+        start: "top center",
+        end: "center center",
+        markers: true,
+        scrub: 1,
+      },
+      opacity: 0,
+    });
+
+    gsap.fromTo(
+      textRefThree.current,
+      { opacity: 0 },
+      {
         scrollTrigger: {
           trigger: textRefThree.current,
           start: "top center",
-          end: "bottom center",
+          end: "center center",
           markers: true,
+          scrub: 1,
         },
-        opacity: 0,
-      });
-    },
-    { dependencies: [textRefOne, textRefTwo, textRefThree] },
-  );
+        opacity: 1,
+        immediateRender: false,
+      }
+    );
+  }, [textRefOne, textRefTwo, textRefThree]);
 
   useGSAP(() => {
     gsap.to(objectRef.current, {
       scrollTrigger: {
         trigger: serviceRef.current,
         start: "top top",
-        end: "bottom top",
+        end: "bottom center",
         pin: objectRef.current,
         scrub: 1,
         markers: true,
@@ -80,12 +102,12 @@ export default function Services() {
   }, [selected]);
 
   return (
-    <div className="min-h-[220vh]   flex flex-col">
+    <div className="min-h-[220vh] flex flex-col">
       <div
         ref={sectionRef}
         className="h-[20vh] sticky top-0 font-rubic-mono opacity-0 bg-[#0f0f0f] flex justify-center items-center w-full z-10 "
       >
-        <div className="relative  w-full">
+        <div className="relative w-full">
           <h1 className="text-8xl lg:text-9xl text-pink-eraser font-bold text-center mt-5 tracking-tight leading-none">
             OUR SOLUTIONS
           </h1>
@@ -95,16 +117,16 @@ export default function Services() {
       <div
         ref={serviceRef}
         id="services"
-        className="h-[200vh] w-full bg-[#0f0f0f]  flex"
+        className="h-[200vh] w-full bg-[#0f0f0f] flex"
       >
-        <div className="w-1/2 flex justify-center  h-[80vh] items-center">
+        <div className="w-1/2 flex justify-center h-[80vh] items-center">
           <div ref={objectRef} className="w-44 h-44 bg-black relative"></div>
         </div>
         <div
           ref={textRef}
           className="w-1/2 relative h-full flex flex-col gap-56 p-10 text-paper"
         >
-          <div ref={textRefOne} className=" sticky w-full left-0 top-1/3  ">
+          <div ref={textRefOne} className="sticky w-full left-0 top-1/3">
             <h1 className="font-notable text-3xl text-pink-eraser mb-4">
               Visual Storytelling That Resonates
             </h1>
@@ -118,7 +140,7 @@ export default function Services() {
               and drive business growth.
             </p>
           </div>
-          <div ref={textRefTwo} className=" sticky w-full left-0 top-1/3  ">
+          <div ref={textRefTwo} className="sticky opacity-0 w-full left-0 top-1/3">
             <h1 className="text-pink-eraser font-notable text-3xl mb-4">
               Your Vision, Our Guidance, Seamless Results
             </h1>
@@ -132,11 +154,11 @@ export default function Services() {
               maximizing your online potential.
             </p>
           </div>
-          <div ref={textRefThree} className=" sticky w-full left-0 top-1/3  ">
+          <div ref={textRefThree} className="sticky w-full left-0 opacity-0 top-1/3">
             <h1 className="font-notable text-pink-eraser text-3xl mb-4">
               High-Performance Websites, Built for Speed & Reliability
             </h1>
-            <p className="max-w-2xl text-xl font-semibold leading-relaxed">
+            <p className="max-w-2xl text-xl font-semibold  leading-relaxed">
               In today&apos;s fast-paced digital world, speed and reliability
               are paramount. We leverage the latest web technologies to build
               websites that are not only visually impressive but also
