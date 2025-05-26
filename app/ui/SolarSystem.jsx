@@ -58,7 +58,6 @@ function MyMesh() {
     0.5, // Neptune
   ];
 
-  // Planet textures
   const textures = [
     sunMap,
     mercuryMap,
@@ -109,7 +108,7 @@ function SolarSystem() {
   return (
     <Canvas camera={{ position: [0, 6, 18], fov: 50 }}>
       <ambientLight intensity={0.3} />
-      <pointLight position={[1, 2, 3]} intensity={10}  color={"white"} />
+      <pointLight position={[1, 2, 4]} intensity={8}  color={"white"} />
       <MyMesh />
     </Canvas>
   );

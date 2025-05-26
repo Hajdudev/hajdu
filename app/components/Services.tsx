@@ -16,7 +16,7 @@ export default function Services() {
   const textRefThree = useRef(null);
   const textRef = useRef(null);
   const sectionRef = useRef(null);
-
+//pinning the text 
   useGSAP(() => {
     gsap.to(textRefOne.current, {
       scrollTrigger: {
@@ -74,6 +74,7 @@ export default function Services() {
     );
   }, [textRefOne, textRefTwo, textRefThree]);
 
+  //pinning the solar system
   useGSAP(() => {
     gsap.to(objectRef.current, {
       scrollTrigger: {
@@ -82,10 +83,10 @@ export default function Services() {
         end: "bottom center",
         pin: objectRef.current,
         scrub: 1,
-
       },
     });
   }, []);
+  //lading animatoin
   useGSAP(() => {
     if (selected === 3) {
       gsap.set(sectionRef.current, {
