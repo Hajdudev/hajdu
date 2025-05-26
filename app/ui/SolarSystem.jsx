@@ -108,8 +108,8 @@ function MyMesh() {
 function SolarSystem() {
   return (
     <Canvas camera={{ position: [0, 6, 18], fov: 50 }}>
-      <pointLight position={[0, 0, 0]} intensity={3.5} color="#fff7d6" />
-      <ambientLight intensity={0.25} />
+      <ambientLight intensity={0.3} />
+      <pointLight position={[1, 2, 3]} intensity={10}  color={"white"} />
       <MyMesh />
     </Canvas>
   );
