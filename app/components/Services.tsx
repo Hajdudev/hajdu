@@ -4,6 +4,7 @@ import { RootState } from "../store/store";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SolarSystem from "../ui/SolarSystem";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function Services() {
@@ -23,7 +24,7 @@ export default function Services() {
         start: "top top",
         endTrigger: textRefTwo.current,
         end: "top center",
-        markers: true,
+
         scrub: 1,
       },
       opacity: 0,
@@ -37,7 +38,7 @@ export default function Services() {
           trigger: textRefTwo.current,
           start: "top center",
           end: "center center",
-          markers: true,
+
           scrub: 1,
         },
         opacity: 1,
@@ -50,7 +51,7 @@ export default function Services() {
         trigger: textRefThree.current,
         start: "top center",
         end: "center center",
-        markers: true,
+
         scrub: 1,
       },
       opacity: 0,
@@ -64,7 +65,7 @@ export default function Services() {
           trigger: textRefThree.current,
           start: "top center",
           end: "center center",
-          markers: true,
+
           scrub: 1,
         },
         opacity: 1,
@@ -81,9 +82,8 @@ export default function Services() {
         end: "bottom center",
         pin: objectRef.current,
         scrub: 1,
-        markers: true,
+
       },
-      rotation: 360,
     });
   }, []);
   useGSAP(() => {
@@ -117,14 +117,16 @@ export default function Services() {
       <div
         ref={serviceRef}
         id="services"
-        className="h-[200vh] w-full bg-[#0f0f0f] flex"
+        className="h-[250vh] w-full bg-[#0f0f0f] flex"
       >
         <div className="w-1/2 flex justify-center h-[80vh] items-center">
-          <div ref={objectRef} className="w-44 h-44 bg-black relative"></div>
+          <div ref={objectRef} className="w-full h-full relative">
+            <SolarSystem />
+          </div>
         </div>
         <div
           ref={textRef}
-          className="w-1/2 relative h-full flex flex-col gap-56 p-10 text-paper"
+          className="w-1/2 relative h-full flex flex-col justify-around p-10 text-paper"
         >
           <div ref={textRefOne} className="sticky w-full left-0 top-1/3">
             <h1 className="font-notable text-3xl text-pink-eraser mb-4">
