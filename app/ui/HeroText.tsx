@@ -48,16 +48,16 @@ function HeroText() {
   }, [selected]);
 
   return (
-    <div className="w-1/2 pt-20 flex ml-30 flex-col font-lustria items-center justify-center">
+    <div className="w-full md:w-1/2 pt-20 flex ml-5 lg:ml-30 flex-col font-lustria items-center justify-center">
       <div className="w-full ">
-        <p ref={firstTextRef} className="text-6xl opacity-0 text-left">
+        <p ref={firstTextRef} className="text-5xl lg:text-6xl opacity-0 text-left">
           From Concepts To Clicks
         </p>
       </div>
       <div className="mt-5 w-full ">
         <p
           ref={secondTextRef}
-          className="text-6xl ml-10 font-semibold opacity-0 text-left"
+          className=" text-5xl lg:text-6xl ml-10 font-semibold opacity-0 text-left"
         >
           We Build Websites That Drive Results
         </p>

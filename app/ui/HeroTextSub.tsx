@@ -21,8 +21,8 @@ function HeroTextSub() {
   }, [selected]);
 
   return (
-    <div className="w-1/2  grid grid-rows-3 h-full">
-      <div className="row-start-3 px-30">
+    <div className="md:w-1/2 hidden md:grid grid-rows-9 h-full">
+      <div className="row-start-6 lg:row-start-7 px-10 lg:px-30">
         <p ref={textRef} className="text-2xl opacity-0 font-babas-neue ">
           We are a website agency specializing in creating memorable and unique
           online experiences through captivating animations and immersive 3D
