@@ -62,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` ${notable.variable} ${geistSans.variable} ${babasNeue.variable} ${lustria.variable} ${rubicMono.variable} ${geistMono.variable} antialiased`}
+        className={`overflow-x-clip ${notable.variable} ${geistSans.variable} ${babasNeue.variable} ${lustria.variable} ${rubicMono.variable} ${geistMono.variable} antialiased`}
       >
         <StoreProvider>
           <Header />
