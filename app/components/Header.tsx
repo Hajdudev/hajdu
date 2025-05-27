@@ -1,7 +1,7 @@
 "use client";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { setSelected } from "../store/gsap/gsap";
@@ -9,7 +9,22 @@ import { setSelected } from "../store/gsap/gsap";
 export default function Header() {
   const selected = useSelector((state: RootState) => state.gsap.selected);
   const headerRef = useRef(null);
+  const hamburgerRef = useRef(null);
   const dispatch = useDispatch();
+
+  const [isOpen, setIsOpen] = useState(false)
+  function handleClick(){
+    gsap.fromTo(hamburgerRef.current, {
+      x: 300
+    },{
+        x: 0,
+        duration: 2,
+
+        onComplete: () => {
+          setIsOpen(state => !state)
+        }
+      })
+  }
 
   useGSAP(() => {
     if (selected == 3) {
@@ -30,7 +45,7 @@ export default function Header() {
     <div
       ref={headerRef}
       id="header"
-      className="w-screen opacity-0 fixed z-10 flex justify-between items-center px-16 py-4 h-auto"
+      className="w-screen opacity-0 fixed z-40 flex justify-between items-center px-4 md:px-10 lg:px-16 py-2 md:py-4 h-auto"
     >
       <div className="flex justify-start w-1/3 items-center">
         <div className="w-16 h-16 relative">
@@ -71,18 +86,25 @@ export default function Header() {
           </svg>
         </div>
       </div>
-      <div className="flex gap-13 justify-center w-1/3 items-center">
+      <div className="hidden md:flex gap-13 justify-center w-1/3 items-center">
         <span className="text-xl text-paper/80" onDragOver={() => { }}>
           About
         </span>
         <span className="text-xl text-paper/80">Services</span>
         <span className="text-xl text-paper/80">Pricing</span>
       </div>
-      <div className="flex gap-13 w-1/3 justify-end items-center">
+      <div className="hidden md:flex w-1/3 justify-end items-center">
         <button className="bg-gradient-to-r animate-background-animation from-cobal via-blue-400 to-cobal rounded-3xl text-2xl px-7 py-2 [background-size:200%_200%] ">
           Contact
         </button>
       </div>
+      <div onClick={ () => handleClick()} className="md:hidden z-50 h-full w-auto ">
+        <div className={`w-9 h-0.5  transition-all duration-150 ${isOpen ? "rotate-45 translate-y-1.5 " : ""} bg-white`}></div>  
+        <div className={`w-9 h-0.5 transition-all duration-150 mt-3 ${isOpen ? "-rotate-45 -translate-y-1.5" : ""}  bg-white`}></div>  
+      </div>
+      {isOpen ? <div ref={hamburgerRef} className="fixed top-0 left-0  z-49 w-screen h-screen bg-[#0a0a0a]"></div> : null}
+
     </div>
+
   );
 }

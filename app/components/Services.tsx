@@ -106,14 +106,11 @@ export default function Services() {
     <div className="min-h-[220vh] flex flex-col">
       <div
         ref={sectionRef}
-        className="h-[20vh] sticky top-0 font-rubic-mono opacity-0 bg-[#0f0f0f] flex justify-center items-center w-full z-10 "
+        className="h-[20vh] sticky top-0 font-rubic-mono opacity-0 bg-[#0f0f0f] flex justify-center items-center xl:items-end w-full z-10 "
       >
-        <div className="relative h-full flex justify-center items-center w-full">
-          <h1 className="text-4xl md:text-8xl lg:text-9xl text-pink-eraser font-bold text-center mt-5 tracking-tight leading-none">
+          <h1 className="text-5xl md:text-7xl xl:text-8xl text-pink-eraser font-bold text-center  ">
             OUR SOLUTIONS
           </h1>
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-cobal rounded-full"></div>
-        </div>
       </div>
       <div
         ref={serviceRef}
