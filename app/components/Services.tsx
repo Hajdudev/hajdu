@@ -16,7 +16,7 @@ export default function Services() {
   const textRefThree = useRef(null);
   const textRef = useRef(null);
   const sectionRef = useRef(null);
-//pinning the text 
+  //pinning the text 
   useGSAP(() => {
     gsap.to(textRefOne.current, {
       scrollTrigger: {
@@ -108,11 +108,11 @@ export default function Services() {
         ref={sectionRef}
         className="h-[20vh] sticky top-0 font-rubic-mono opacity-0 bg-[#0f0f0f] flex justify-center items-center w-full z-10 "
       >
-        <div className="relative w-full">
-          <h1 className="text-8xl lg:text-9xl text-pink-eraser font-bold text-center mt-5 tracking-tight leading-none">
+        <div className="relative h-full flex justify-center items-center w-full">
+          <h1 className="text-4xl md:text-8xl lg:text-9xl text-pink-eraser font-bold text-center mt-5 tracking-tight leading-none">
             OUR SOLUTIONS
           </h1>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-cobal rounded-full"></div>
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-cobal rounded-full"></div>
         </div>
       </div>
       <div

@@ -54,17 +54,17 @@ function HeroText() {
           From Concepts To Clicks
         </p>
       </div>
-      <div className="mt-5 w-full ">
+      <div className="md:mt-5 w-full ">
         <p
           ref={secondTextRef}
-          className=" text-5xl lg:text-6xl ml-10 font-semibold opacity-0 text-left"
+          className=" text-5xl lg:text-6xl md:ml-10 font-semibold opacity-0 text-left"
         >
           We Build Websites That Drive Results
         </p>
       </div>
       <button
         ref={buttonRef}
-        className="bg-pink-eraser ml-15 opacity-0 self-start px-5 font-babas-neue py-2 mt-8 rounded-2xl text-3xl  text-white"
+        className="bg-pink-eraser ml-15 opacity-0 self-start px-5 font-babas-neue py-2 md:mt-8 rounded-2xl text-3xl  text-white"
       >
         Contact Us
       </button>
