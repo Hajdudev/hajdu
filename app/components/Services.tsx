@@ -80,7 +80,7 @@ export default function Services() {
       scrollTrigger: {
         trigger: serviceRef.current,
         start: "top top",
-        end: "bottom center",
+        end: "bottom +=700",
         pin: objectRef.current,
         scrub: 1,
       },
@@ -115,22 +115,22 @@ export default function Services() {
       <div
         ref={serviceRef}
         id="services"
-        className="h-[250vh] w-full bg-[#0f0f0f] flex"
+        className="h-[250vh] relative w-full bg-[#0f0f0f] flex"
       >
-        <div className="w-1/2 flex justify-center h-[80vh] items-center">
-          <div ref={objectRef} className="w-full h-full relative">
+        <div className="w-full md:w-1/2 absolute top-0  left-0  md:relative flex justify-center h-screen md:h-[80vh] items-center">
+          <div ref={objectRef} className="w-full h-full ">
             <SolarSystem />
           </div>
         </div>
         <div
           ref={textRef}
-          className="w-1/2 relative h-full flex flex-col justify-around p-10 text-paper"
+          className=" w-full md:w-1/2 relative h-full flex flex-col justify-around p-10 text-paper"
         >
           <div ref={textRefOne} className="sticky w-full left-0 top-1/3">
             <h1 className="font-babas-neue text-3xl text-pink-eraser mb-4">
               Visual Storytelling That Resonates
             </h1>
-            <p className="max-w-2xl text-xl font-semibold leading-relaxed">
+            <p className="max-w-2xl text-md md:text-xl  font-semibold leading-relaxed">
               Imagine a website so visually stunning, so engaging, that it
               leaves a lasting impression on every visitor. We craft custom
               websites that go beyond the ordinary, incorporating captivating
@@ -144,7 +144,7 @@ export default function Services() {
             <h1 className="text-pink-eraser font-babas-neue text-3xl mb-4">
               Your Vision, Our Guidance, Seamless Results
             </h1>
-            <p className="max-w-2xl text-xl font-semibold leading-relaxed">
+            <p className="max-w-2xl text-md md:text-xl font-semibold leading-relaxed">
               We understand that building a website is a journey. That&apos;s
               why we prioritize a collaborative partnership, guiding you through
               every step of the process. We listen intently to your vision,
@@ -158,7 +158,7 @@ export default function Services() {
             <h1 className="font-babas-neue text-pink-eraser text-3xl mb-4">
               High-Performance Websites, Built for Speed & Reliability
             </h1>
-            <p className="max-w-2xl text-xl font-semibold  leading-relaxed">
+            <p className="max-w-2xl text-md md:text-xl font-semibold  leading-relaxed">
               In today&apos;s fast-paced digital world, speed and reliability
               are paramount. We leverage the latest web technologies to build
               websites that are not only visually impressive but also
