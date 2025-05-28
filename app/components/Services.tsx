@@ -106,9 +106,9 @@ export default function Services() {
     <div className="min-h-[220vh] flex flex-col">
       <div
         ref={sectionRef}
-        className="h-[20vh] sticky top-0 font-rubic-mono opacity-0 bg-[#0f0f0f] flex justify-center items-center xl:items-end w-full z-10 "
+        className="h-[21vh] sticky top-0 font-rubic-mono opacity-0 bg-[#0f0f0f] flex justify-center items-center xl:items-end w-full z-10 "
       >
-          <h1 className="text-5xl md:text-7xl xl:text-8xl text-pink-eraser font-bold text-center  ">
+          <h1 className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl text-pink-eraser font-bold text-center  ">
             OUR SOLUTIONS
           </h1>
       </div>
@@ -127,7 +127,7 @@ export default function Services() {
           className="w-1/2 relative h-full flex flex-col justify-around p-10 text-paper"
         >
           <div ref={textRefOne} className="sticky w-full left-0 top-1/3">
-            <h1 className="font-notable text-3xl text-pink-eraser mb-4">
+            <h1 className="font-babas-neue text-3xl text-pink-eraser mb-4">
               Visual Storytelling That Resonates
             </h1>
             <p className="max-w-2xl text-xl font-semibold leading-relaxed">
@@ -141,7 +141,7 @@ export default function Services() {
             </p>
           </div>
           <div ref={textRefTwo} className="sticky opacity-0 w-full left-0 top-1/3">
-            <h1 className="text-pink-eraser font-notable text-3xl mb-4">
+            <h1 className="text-pink-eraser font-babas-neue text-3xl mb-4">
               Your Vision, Our Guidance, Seamless Results
             </h1>
             <p className="max-w-2xl text-xl font-semibold leading-relaxed">
@@ -155,7 +155,7 @@ export default function Services() {
             </p>
           </div>
           <div ref={textRefThree} className="sticky w-full left-0 opacity-0 top-1/3">
-            <h1 className="font-notable text-pink-eraser text-3xl mb-4">
+            <h1 className="font-babas-neue text-pink-eraser text-3xl mb-4">
               High-Performance Websites, Built for Speed & Reliability
             </h1>
             <p className="max-w-2xl text-xl font-semibold  leading-relaxed">

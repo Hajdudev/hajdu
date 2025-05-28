@@ -48,23 +48,23 @@ function HeroText() {
   }, [selected]);
 
   return (
-    <div className="w-full md:w-1/2 pt-20 flex ml-5 lg:ml-30 flex-col font-lustria items-center justify-center">
+    <div className="w-full md:w-1/2 pt-20 flex md:ml-5 lg:ml-30 flex-col font-lustria items-center md:justify-center">
       <div className="w-full ">
-        <p ref={firstTextRef} className="text-5xl lg:text-6xl opacity-0 text-left">
+        <p ref={firstTextRef} className="text-5xl lg:text-6xl opacity-0 text-center md:text-left">
           From Concepts To Clicks
         </p>
       </div>
       <div className="md:mt-5 w-full ">
         <p
           ref={secondTextRef}
-          className=" text-5xl lg:text-6xl md:ml-10 font-semibold opacity-0 text-left"
+          className=" text-5xl mt-2 md:mt-0 lg:text-6xl md:ml-10 font-bold md:font-semibold opacity-0 text-center md:text-left"
         >
           We Build Websites That Drive Results
         </p>
       </div>
       <button
         ref={buttonRef}
-        className="bg-pink-eraser ml-15 opacity-0 self-start px-5 font-babas-neue py-2 md:mt-8 rounded-2xl text-3xl  text-white"
+        className="bg-pink-eraser md:ml-15 opacity-0 self-center md:self-start px-5 font-babas-neue py-2 md:mt-8 rounded-2xl text-3xl  text-white"
       >
         Contact Us
       </button>
