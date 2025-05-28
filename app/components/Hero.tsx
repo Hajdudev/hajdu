@@ -8,7 +8,7 @@ export default function Hero() {
         <GradientBall />
       </div>
 
-      <div className="h-full flex w-full relative z-10">
+      <div className="h-full flex w-full flex-col justify-around items-center md:flex-row relative z-10">
         <HeroText />
         <HeroTextSub />
       </div>

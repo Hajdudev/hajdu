@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -90,7 +89,6 @@ export default function App() {
   return (
     <Canvas>
       <ambientLight />
-      <OrbitControls />
       <AnimatedSphere />
     </Canvas>
   );
