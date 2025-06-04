@@ -5,6 +5,8 @@ import Services from "./components/Services";
 import Lenis from "lenis";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
+import Cards from "./components/Cards";
+import Contact from "./components/Contact";
 
 export default function Home() {
   const selected = useSelector((state: RootState) => state.gsap.selected);
@@ -30,7 +32,8 @@ export default function Home() {
     <div>
       <Hero />
       <Services />
-      <div className="w-screen h-screen bg-green-200"></div>
+      <Cards />
+      <Contact />
     </div>
   );
 }
