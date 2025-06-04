@@ -5,9 +5,12 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SolarSystem from "../ui/SolarSystem";
+import { useTranslations } from "next-intl";
+
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function Services() {
+  const t = useTranslations("Services");
   const selected = useSelector((state: RootState) => state.gsap.selected);
   const serviceRef = useRef(null);
   const objectRef = useRef(null);
@@ -16,7 +19,7 @@ export default function Services() {
   const textRefThree = useRef(null);
   const textRef = useRef(null);
   const sectionRef = useRef(null);
-  //pinning the text 
+
   useGSAP(() => {
     gsap.to(textRefOne.current, {
       scrollTrigger: {
@@ -24,7 +27,6 @@ export default function Services() {
         start: "top top",
         endTrigger: textRefTwo.current,
         end: "top center",
-
         scrub: 1,
       },
       opacity: 0,
@@ -38,12 +40,11 @@ export default function Services() {
           trigger: textRefTwo.current,
           start: "top center",
           end: "center center",
-
           scrub: 1,
         },
         opacity: 1,
         immediateRender: false,
-      }
+      },
     );
 
     gsap.to(textRefTwo.current, {
@@ -51,7 +52,6 @@ export default function Services() {
         trigger: textRefThree.current,
         start: "top center",
         end: "center center",
-
         scrub: 1,
       },
       opacity: 0,
@@ -65,16 +65,14 @@ export default function Services() {
           trigger: textRefThree.current,
           start: "top center",
           end: "center center",
-
           scrub: 1,
         },
         opacity: 1,
         immediateRender: false,
-      }
+      },
     );
   }, [textRefOne, textRefTwo, textRefThree]);
 
-  //pinning the solar system
   useGSAP(() => {
     gsap.to(objectRef.current, {
       scrollTrigger: {
@@ -86,7 +84,6 @@ export default function Services() {
       },
     });
   }, []);
-  //lading animatoin
   useGSAP(() => {
     if (selected === 3) {
       gsap.set(sectionRef.current, {
@@ -108,9 +105,9 @@ export default function Services() {
         ref={sectionRef}
         className="h-[21vh] sticky top-0 font-rubic-mono opacity-0 bg-[#0f0f0f] flex justify-center items-center xl:items-end w-full z-10 "
       >
-          <h1 className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl text-pink-eraser font-bold text-center  ">
-            OUR SOLUTIONS
-          </h1>
+        <h1 className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl text-pink-eraser font-bold text-center  ">
+          {t("headline")}
+        </h1>
       </div>
       <div
         ref={serviceRef}
@@ -128,45 +125,32 @@ export default function Services() {
         >
           <div ref={textRefOne} className="sticky w-full left-0 top-1/3">
             <h1 className="font-babas-neue text-3xl text-pink-eraser mb-4">
-              Visual Storytelling That Resonates
+              {t("section1.title")}
             </h1>
             <p className="max-w-2xl text-md md:text-xl  font-semibold leading-relaxed">
-              Imagine a website so visually stunning, so engaging, that it
-              leaves a lasting impression on every visitor. We craft custom
-              websites that go beyond the ordinary, incorporating captivating
-              animations and immersive 3D elements that will be etched into your
-              customers&apos; minds. More than just eye-catching, these visual
-              elements are strategically designed to enhance your brand story
-              and drive business growth.
+              {t("section1.text")}
             </p>
           </div>
-          <div ref={textRefTwo} className="sticky opacity-0 w-full left-0 top-1/3">
+          <div
+            ref={textRefTwo}
+            className="sticky opacity-0 w-full left-0 top-1/3"
+          >
             <h1 className="text-pink-eraser font-babas-neue text-3xl mb-4">
-              Your Vision, Our Guidance, Seamless Results
+              {t("section2.title")}
             </h1>
             <p className="max-w-2xl text-md md:text-xl font-semibold leading-relaxed">
-              We understand that building a website is a journey. That&apos;s
-              why we prioritize a collaborative partnership, guiding you through
-              every step of the process. We listen intently to your vision,
-              anticipate your needs, and provide expert guidance to create a
-              website that not only meets your expectations but exceeds them.
-              Our goal is to seamlessly convert visitors into loyal customers,
-              maximizing your online potential.
+              {t("section2.text")}
             </p>
           </div>
-          <div ref={textRefThree} className="sticky w-full left-0 opacity-0 top-1/3">
+          <div
+            ref={textRefThree}
+            className="sticky w-full left-0 opacity-0 top-1/3"
+          >
             <h1 className="font-babas-neue text-pink-eraser text-3xl mb-4">
-              High-Performance Websites, Built for Speed & Reliability
+              {t("section3.title")}
             </h1>
             <p className="max-w-2xl text-md md:text-xl font-semibold  leading-relaxed">
-              In today&apos;s fast-paced digital world, speed and reliability
-              are paramount. We leverage the latest web technologies to build
-              websites that are not only visually impressive but also
-              lightning-fast and rock-solid. We tailor our approach to your
-              specific needs, ensuring your website is optimized for peak
-              performance and a seamless user experience. We also believe in
-              transparency and collaboration, keeping you actively involved
-              throughout the development process.
+              {t("section3.text")}
             </p>
           </div>
         </div>

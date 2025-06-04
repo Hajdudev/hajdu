@@ -10,6 +10,7 @@ import {
 import "./globals.css";
 import Header from "./components/Header";
 import StoreProvider from "./store/StoreProvider";
+import { NextIntlClientProvider } from "next-intl";
 
 const notable = Notable({
   variable: "--font-notable",
@@ -64,10 +65,12 @@ export default function RootLayout({
       <body
         className={` ${notable.variable} ${geistSans.variable} ${babasNeue.variable} ${lustria.variable} ${rubicMono.variable} ${geistMono.variable} antialiased`}
       >
-        <StoreProvider>
-          <Header />
-          {children}
-        </StoreProvider>
+        <NextIntlClientProvider>
+          <StoreProvider>
+            <Header />
+            {children}
+          </StoreProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -1,0 +1,82 @@
+{
+  "HeroText": {
+    "headline1": "From Concepts To Clicks",
+    "headline2": "We Build Websites That Drive Results",
+    "contactButton": "Contact Us"
+  },
+  "HeroTextSub": {
+    "description": "We are a website agency specializing in creating memorable and unique online experiences through captivating animations and immersive 3D elements. Our primary goal is to drive your business growth and help you achieve your objectives with a website that stands out."
+  },
+  "Header": {
+    "about": "About",
+    "services": "Services",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "Services": {
+    "headline": "OUR SOLUTIONS",
+    "section1": {
+      "title": "Visual Storytelling That Resonates",
+      "text": "Imagine a website so visually stunning, so engaging, that it leaves a lasting impression on every visitor. We craft custom websites that go beyond the ordinary, incorporating captivating animations and immersive 3D elements that will be etched into your customers' minds. More than just eye-catching, these visual elements are strategically designed to enhance your brand story and drive business growth."
+    },
+    "section2": {
+      "title": "Your Vision, Our Guidance, Seamless Results",
+      "text": "We understand that building a website is a journey. That's why we prioritize a collaborative partnership, guiding you through every step of the process. We listen intently to your vision, anticipate your needs, and provide expert guidance to create a website that not only meets your expectations but exceeds them. Our goal is to seamlessly convert visitors into loyal customers, maximizing your online potential."
+    },
+    "section3": {
+      "title": "High-Performance Websites, Built for Speed & Reliability",
+      "text": "In today's fast-paced digital world, speed and reliability are paramount. We leverage the latest web technologies to build websites that are not only visually impressive but also lightning-fast and rock-solid. We tailor our approach to your specific needs, ensuring your website is optimized for peak performance and a seamless user experience. We also believe in transparency and collaboration, keeping you actively involved throughout the development process."
+    }
+  },
+  "Contact": {
+    "headline": "Let's Connect",
+    "subheadline": "Have a question or want to work together? Drop me a message and I'll get back to you soon!",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Your message...",
+      "charCount": "Characters: ",
+      "sendButton": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Something went wrong. Please try again.",
+      "errorGeneric": "An error occurred. Please try again later."
+    },
+    "info": {
+      "title": "Contact Information",
+      "emailLabel": "Email",
+      "emailValue": "contact@hajdu.dev",
+      "locationLabel": "Location",
+      "locationValue": "Palarikovo, Slovakia",
+      "connectLabel": "Connect with me"
+    },
+    "thankYouBox": {
+      "title": "Thank you for reaching out!",
+      "replyTime": "I usually reply within 24 hours. Your message means a lot. Looking forward to connecting!",
+      "quote": "“Great things are done by a series of small things brought together.” – Vincent Van Gogh"
+    }
+  },
+  "Cards": {
+    "steps": [
+      {
+        "title": "Goal Setting & Discovery",
+        "text": "We start by getting to know you and your business. Through an in-depth conversation, we identify your goals, target audience, and the results you want to achieve. This helps us build a strategy and vision tailored to your unique needs."
+      },
+      {
+        "title": "Design Exploration",
+        "text": "Once we understand your goals, our design team creates visual concepts and wireframes. We collaborate closely with you for feedback, ensuring the design matches your brand, values, and vision. Your input shapes every detail before we move forward."
+      },
+      {
+        "title": "Website Development",
+        "text": "With the design approved, our developers build your website using modern, robust technologies. We focus on speed, usability, and mobile responsiveness, making sure your site looks great and works flawlessly on every device."
+      },
+      {
+        "title": "Launch & Delivery",
+        "text": "After thorough testing and final tweaks, we launch your website to the world! We take care of every detail for a smooth release and provide you with the guidance and ongoing support you need as your website grows."
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "HeroText": {
+    "headline1": "Od nápadov k výsledkom",
+    "headline2": "Tvoríme weby, ktoré prinášajú výsledky",
+    "contactButton": "Kontaktujte nás"
+  },
+  "HeroTextSub": {
+    "description": "Sme webová agentúra špecializujúca sa na vytváranie nezabudnuteľných a jedinečných online zážitkov vďaka pútavým animáciám a 3D prvkom. Naším hlavným cieľom je podporiť rast vášho podnikania a pomôcť vám dosiahnuť vaše ciele s webom, ktorý vynikne."
+  },
+  "Header": {
+    "about": "O nás",
+    "services": "Služby",
+    "pricing": "Cenník",
+    "contact": "Kontakt"
+  },
+  "Services": {
+    "headline": "NAŠE RIEŠENIA",
+    "section1": {
+      "title": "Vizuálne príbehy, ktoré zanechajú dojem",
+      "text": "Predstavte si webstránku tak vizuálne ohromujúcu a pútavú, že zanechá dojem na každého návštevníka. Vytvárame na mieru šité weby, ktoré idú nad rámec bežného, s využitím pútavých animácií a pohlcujúcich 3D prvkov, ktoré zostanú vo vedomí vašich zákazníkov. Tieto prvky nie sú len na efekt, ale strategicky posilňujú váš príbeh značky a podporujú rast firmy."
+    },
+    "section2": {
+      "title": "Vaša vízia, naše vedenie, bezproblémové výsledky",
+      "text": "Chápeme, že tvorba webu je cesta. Preto uprednostňujeme spoluprácu a sprevádzame vás celým procesom. Pozorne počúvame vašu víziu, predvídame vaše potreby a poskytujeme odborné rady, aby sme vytvorili web, ktorý nielen splní, ale aj prekoná vaše očakávania. Naším cieľom je jednoducho premeniť návštevníkov na verných zákazníkov a maximalizovať váš online potenciál."
+    },
+    "section3": {
+      "title": "Výkonné weby stavané na rýchlosť a spoľahlivosť",
+      "text": "V dnešnom rýchlom digitálnom svete sú rýchlosť a spoľahlivosť kľúčové. Využívame najnovšie webové technológie na tvorbu stránok, ktoré sú nielen vizuálne pôsobivé, ale aj bleskurýchle a stabilné. Prístup prispôsobujeme vašim konkrétnym potrebám a zabezpečujeme, aby váš web dosahoval špičkový výkon a bezproblémový používateľský zážitok. Veríme aj v transparentnosť a spoluprácu, preto vás zapájame do celého procesu vývoja."
+    }
+  },
+  "Contact": {
+    "headline": "Spojme sa",
+    "subheadline": "Máte otázku alebo záujem o spoluprácu? Pošlite mi správu a ozvem sa vám čoskoro!",
+    "form": {
+      "nameLabel": "Meno",
+      "namePlaceholder": "Vaše meno",
+      "emailLabel": "Email",
+      "emailPlaceholder": "vas.email@priklad.sk",
+      "messageLabel": "Správa",
+      "messagePlaceholder": "Vaša správa...",
+      "charCount": "Charakterou: ",
+      "sendButton": "Odoslať správu",
+      "sending": "Odosielam...",
+      "success": "Správa bola úspešne odoslaná! Ozvem sa vám čoskoro.",
+      "error": "Niečo sa pokazilo. Skúste to prosím znova.",
+      "errorGeneric": "Vyskytla sa chyba. Skúste to prosím neskôr."
+    },
+    "info": {
+      "title": "Kontaktné údaje",
+      "emailLabel": "Email",
+      "emailValue": "contact@hajdu.dev",
+      "locationLabel": "Adresa",
+      "locationValue": "Palárikovo, Slovensko",
+      "connectLabel": "Spojte sa so mnou"
+    },
+    "thankYouBox": {
+      "title": "Ďakujem za vašu správu!",
+      "replyTime": "Odpovedám zvyčajne do 24 hodín. Vaša správa je pre mňa dôležitá. Teším sa na spoluprácu!",
+      "quote": "„Veľké veci vznikajú zo série malých vecí, ktoré sa spoja.“ – Vincent Van Gogh"
+    }
+  },
+  "Cards": {
+    "steps": [
+      {
+        "title": "Stanovenie cieľov & objavovanie",
+        "text": "Začíname tým, že spoznáme vás a vaše podnikanie. V rámci podrobného rozhovoru identifikujeme vaše ciele, cieľovú skupinu a výsledky, ktoré chcete dosiahnuť. Takto vytvoríme stratégiu a víziu šitú na mieru vašim potrebám."
+      },
+      {
+        "title": "Návrh & vizuálna predstava",
+        "text": "Keď pochopíme vaše ciele, náš dizajnérsky tím vytvorí vizuálne koncepty a wireframy. Úzko s vami spolupracujeme na spätnej väzbe, aby dizajn zodpovedal vašej značke, hodnotám a vízii. Váš názor ovplyvňuje každý detail pred ďalším postupom."
+      },
+      {
+        "title": "Vývoj webstránky",
+        "text": "Po schválení dizajnu naši vývojári vytvoria váš web pomocou moderných a spoľahlivých technológií. Sústreďujeme sa na rýchlosť, použiteľnosť a responzivitu, aby váš web vyzeral skvele a fungoval bezchybne na každom zariadení."
+      },
+      {
+        "title": "Spustenie & odovzdanie",
+        "text": "Po dôkladnom testovaní a finálnych úpravách spúšťame váš web do sveta! Postaráme sa o každý detail, aby bol prechod plynulý, a poskytneme vám podporu a usmernenie aj po spustení stránky."
+      }
+    ]
+  }
+}

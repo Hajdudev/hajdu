@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Contact() {
+  const t = useTranslations("Contact");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,7 +17,6 @@ export default function Contact() {
     message: "",
   });
 
-  // Handle form input changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -53,22 +54,21 @@ export default function Contact() {
         setSubmitStatus({
           success: true,
           error: false,
-          message: "Message sent successfully! I'll get back to you soon.",
+          message: t("form.success"),
         });
-        // Reset form
         setFormData({ name: "", email: "", message: "" });
       } else {
         setSubmitStatus({
           success: false,
           error: true,
-          message: result.message || "Something went wrong. Please try again.",
+          message: result.message || t("form.error"),
         });
       }
     } catch (error) {
       setSubmitStatus({
         success: false,
         error: true,
-        message: "An error occurred. Please try again later.",
+        message: t("form.errorGeneric"),
       });
       console.error(error);
     } finally {
@@ -84,16 +84,13 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className={`text-center mb-16 transition-all duration-700 `}>
           <h2 className="text-4xl md:text-5xl font-bold text-pink-eraser mb-4">
-            Let&#39;s Connect
+            {t("headline")}
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            Have a question or want to work together? Drop me a message and
-            I&#39;ll get back to you soon!
+            {t("subheadline")}
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          {/* Contact Form */}
           <div className={`transition-all duration-700 delay-300 `}>
             <form
               onSubmit={handleSubmit}
@@ -116,7 +113,7 @@ export default function Contact() {
                   htmlFor="name"
                   className="block text-gray-300 mb-2 text-sm font-medium"
                 >
-                  Name
+                  {t("form.nameLabel")}
                 </label>
                 <div className="relative">
                   <input
@@ -127,7 +124,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
-                    placeholder="Your name"
+                    placeholder={t("form.namePlaceholder")}
                   />
                 </div>
               </div>
@@ -137,7 +134,7 @@ export default function Contact() {
                   htmlFor="email"
                   className="block text-gray-300 mb-2 text-sm font-medium"
                 >
-                  Email
+                  {t("form.emailLabel")}
                 </label>
                 <div className="relative">
                   <input
@@ -148,7 +145,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
-                    placeholder="your.email@example.com"
+                    placeholder={t("form.emailPlaceholder")}
                   />
                 </div>
               </div>
@@ -158,7 +155,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="block text-gray-300 mb-2 text-sm font-medium"
                 >
-                  Message
+                  {t("form.messageLabel")}
                 </label>
                 <div className="relative">
                   <textarea
@@ -168,12 +165,14 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={5}
+                    maxLength={500}
                     className="w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
-                    placeholder="Your message..."
+                    placeholder={t("form.messagePlaceholder")}
                   />
                   <div className="flex justify-between items-center mt-1">
                     <div></div>
                     <span className="text-sm text-gray-400">
+                      {t("form.charCount")}
                       {formData.message.length}/500
                     </span>
                   </div>
@@ -209,20 +208,17 @@ export default function Contact() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       ></path>
                     </svg>
-                    Sending...
+                    {t("form.sending")}
                   </>
                 ) : (
-                  "Send Message"
+                  t("form.sendButton")
                 )}
               </button>
             </form>
           </div>
-
-          {/* Contact Information - keeping the rest of your component the same */}
           <div className={`space-y-8 transition-all duration-700 delay-500 `}>
             <div className="bg-gray-900/40 backdrop-blur-md p-6 rounded-2xl border border-gray-800 shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">Contact Information</h3>
-
+              <h3 className="text-2xl font-bold mb-4">{t("info.title")}</h3>
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="bg-indigo-900/50 p-3 rounded-lg mr-4">
@@ -243,17 +239,16 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-gray-400 mb-1">
-                      Email
+                      {t("info.emailLabel")}
                     </h4>
                     <a
-                      href="mailto:hajdu2024@gmail.com"
+                      href="mailto:contact@hajdu.dev"
                       className="text-white hover:text-blue-400 transition-colors"
                     >
-                      contact@hajdu.dev
+                      {t("info.emailValue")}
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-start">
                   <div className="bg-indigo-900/50 p-3 rounded-lg mr-4">
                     <svg
@@ -279,16 +274,15 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-gray-400 mb-1">
-                      Location
+                      {t("info.locationLabel")}
                     </h4>
-                    <p className="text-white">Palarikovo, Slovakia</p>
+                    <p className="text-white">{t("info.locationValue")}</p>
                   </div>
                 </div>
               </div>
-
               <div className="mt-8">
                 <h4 className="text-sm font-semibold text-gray-400 mb-3">
-                  Connect with me
+                  {t("info.connectLabel")}
                 </h4>
                 <div className="flex space-x-4">
                   <a
@@ -322,7 +316,6 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
             <div className="bg-gray-900/40 backdrop-blur-md space-y-3 p-6 rounded-2xl border border-gray-800 shadow-lg">
               <div className="flex items-center gap-2">
                 <svg
@@ -339,17 +332,14 @@ export default function Contact() {
                   />
                 </svg>
                 <span className="text-pink-eraser font-semibold">
-                  Thank you for reaching out!
+                  {t("thankYouBox.title")}
                 </span>
               </div>
               <p className="text-gray-300">
-                I usually reply within{" "}
-                <span className="font-bold text-pink-eraser">24 hours</span>.
-                Your message means a lot. Looking forward to connecting!
+                {t("thankYouBox.replyTime", { hours: "24" })}
               </p>
               <p className="text-gray-400 text-sm italic">
-                “Great things are done by a series of small things brought
-                together.” – Vincent Van Gogh
+                {t("thankYouBox.quote")}
               </p>
             </div>
           </div>

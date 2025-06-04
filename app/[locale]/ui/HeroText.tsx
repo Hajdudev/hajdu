@@ -4,8 +4,10 @@ import gsap from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelected } from "../store/gsap/gsap";
 import { RootState } from "../store/store";
+import { useTranslations } from "next-intl";
 
 function HeroText() {
+  const t = useTranslations("HeroText");
   const dispatch = useDispatch();
   const selected = useSelector((state: RootState) => state.gsap.selected);
   const firstTextRef = useRef(null);
@@ -50,8 +52,11 @@ function HeroText() {
   return (
     <div className="w-full md:w-1/2 pt-20 flex md:ml-5 lg:ml-30 flex-col font-lustria items-center md:justify-center">
       <div className="w-full ">
-        <p ref={firstTextRef} className="text-5xl lg:text-6xl opacity-0 text-center md:text-left">
-          From Concepts To Clicks
+        <p
+          ref={firstTextRef}
+          className="text-5xl lg:text-6xl opacity-0 text-center md:text-left"
+        >
+          {t("headline1")}
         </p>
       </div>
       <div className="md:mt-5 w-full ">
@@ -59,14 +64,14 @@ function HeroText() {
           ref={secondTextRef}
           className=" text-5xl mt-2 md:mt-0 lg:text-6xl md:ml-10 font-bold md:font-semibold opacity-0 text-center md:text-left"
         >
-          We Build Websites That Drive Results
+          {t("headline2")}
         </p>
       </div>
       <button
         ref={buttonRef}
         className="bg-pink-eraser md:ml-15 opacity-0 self-center md:self-start px-5 font-babas-neue py-2 md:mt-8 rounded-2xl text-3xl  text-white"
       >
-        Contact Us
+        {t("contactButton")}
       </button>
     </div>
   );
