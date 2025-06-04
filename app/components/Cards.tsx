@@ -29,7 +29,7 @@ const cards = [
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 function Cards() {
-  const cardsRef = useRef(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
