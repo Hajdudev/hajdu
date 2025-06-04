@@ -13,6 +13,7 @@ export default function Header() {
   const headerRef = useRef(null);
   const hamburgerRef = useRef(null);
   const dispatch = useDispatch();
+  const [locale, setLocale] = useState("en");
 
   const [isOpen, setIsOpen] = useState(false);
   function handleClick() {
@@ -116,6 +117,40 @@ export default function Header() {
         <span className="text-xl text-paper/80">{t("pricing")}</span>
       </div>
       <div className="hidden md:flex w-1/3 justify-end items-center">
+        <div className="hidden md:flex w-1/3 justify-end items-center">
+          <div className="flex items-center bg-ink rounded-full p-1 md:mr-1 lg:mr-6 shadow-inner">
+            <button
+              onClick={() => setLocale("en")}
+              className={`
+        px-4 py-1 font-bold transition-all rounded-full
+        ${
+          locale === "en"
+            ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow"
+            : "text-blue-200 hover:bg-blue-900/50"
+        }
+      `}
+              aria-pressed={locale === "en"}
+              disabled={locale === "en"}
+            >
+              en
+            </button>
+            <button
+              onClick={() => setLocale("sk")}
+              className={`
+        px-4 py-1 font-bold transition-all rounded-full
+        ${
+          locale === "sk"
+            ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow"
+            : "text-blue-200 hover:bg-blue-900/50"
+        }
+      `}
+              aria-pressed={locale === "sk"}
+              disabled={locale === "sk"}
+            >
+              sk
+            </button>
+          </div>
+        </div>
         <button
           type="button"
           className="
@@ -211,6 +246,38 @@ export default function Header() {
             <span className="text-paper/80">{t("about")}</span>
             <span className="text-paper/80">{t("services")}</span>
             <span className="text-paper/80">{t("pricing")}</span>
+            <div className="flex items-center bg-ink rounded-full p-1 mr-6 shadow-inner">
+              <button
+                onClick={() => setLocale("en")}
+                className={`
+        px-4 py-1 font-bold transition-all rounded-full
+        ${
+          locale === "en"
+            ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow"
+            : "text-blue-200 hover:bg-blue-900/50"
+        }
+      `}
+                aria-pressed={locale === "en"}
+                disabled={locale === "en"}
+              >
+                en
+              </button>
+              <button
+                onClick={() => setLocale("sk")}
+                className={`
+        px-4 py-1 font-bold transition-all rounded-full
+        ${
+          locale === "sk"
+            ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow"
+            : "text-blue-200 hover:bg-blue-900/50"
+        }
+      `}
+                aria-pressed={locale === "sk"}
+                disabled={locale === "sk"}
+              >
+                sk
+              </button>
+            </div>
             <button className="mt-8 bg-gradient-to-r animate-background-animation from-cobal via-blue-400 to-cobal rounded-3xl text-2xl px-8 py-3 [background-size:200%_200%]">
               {t("contact")}
             </button>
