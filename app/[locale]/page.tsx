@@ -11,6 +11,9 @@ import Contact from "./components/Contact";
 export default function Home() {
   const selected = useSelector((state: RootState) => state.gsap.selected);
 
+useEffect(() => {
+  window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
+}, [])
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time: number) {

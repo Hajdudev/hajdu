@@ -42,19 +42,21 @@ function Cards() {
   }, []);
 
   return (
-    <div
-      ref={cardsRef}
-      className="lg:w-auto w-screen h-auto lg:shrink-0 lg:flex mt-15 "
-    >
-      {steps.map((card, idx) => (
-        <Card
-          title={card.title}
-          text={card.text}
-          img={cardImages[idx]}
-          key={card.title + idx}
-        />
-      ))}
-    </div>
+    <section className="relative w-full overflow-x-hidden">
+      <div
+        ref={cardsRef}
+        className="lg:w-auto w-screen h-auto lg:shrink-0 lg:flex mt-15"
+      >
+        {steps.map((card, idx) => (
+          <Card
+            title={card.title}
+            text={card.text}
+            img={cardImages[idx]}
+            key={card.title + idx}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
 

@@ -10,9 +10,12 @@ export const gsapSlice = createSlice({
   reducers: {
     setSelected: (state, action) => {
       state.selected = action.payload;
+    },
+    resetState: (state) => {
+      state.selected = initialState.selected;
     }
   }
 });
 
-export const { setSelected } = gsapSlice.actions;
+export const { setSelected ,resetState} = gsapSlice.actions;
 export default gsapSlice.reducer;

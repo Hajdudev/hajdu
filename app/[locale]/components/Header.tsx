@@ -4,8 +4,9 @@ import gsap from "gsap";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { setSelected } from "../store/gsap/gsap";
-import { useTranslations } from "next-intl";
+import { setSelected, resetState } from "../store/gsap/gsap";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const t = useTranslations("Header");
@@ -13,9 +14,18 @@ export default function Header() {
   const headerRef = useRef(null);
   const hamburgerRef = useRef(null);
   const dispatch = useDispatch();
-  const [locale, setLocale] = useState("en");
+  const currentLang = useLocale();
+  const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
+
+  function handleLocaleChange(newLocale: string) {
+    if (newLocale !== currentLang) {
+      window.scrollTo(0, 0);
+      router.push(`/${newLocale}`);
+    }
+  }
+
   function handleClick() {
     if (!isOpen) {
       gsap.fromTo(
@@ -29,7 +39,7 @@ export default function Header() {
           onComplete: () => {
             setIsOpen((state) => !state);
           },
-        },
+        }
       );
     } else {
       gsap.fromTo(
@@ -43,7 +53,7 @@ export default function Header() {
           onComplete: () => {
             setIsOpen((state) => !state);
           },
-        },
+        }
       );
     }
   }
@@ -118,34 +128,40 @@ export default function Header() {
       </div>
       <div className="hidden md:flex w-1/3 justify-end items-center">
         <div className="hidden md:flex w-1/3 justify-end items-center">
-          <div className="flex items-center bg-ink rounded-full p-1 md:mr-1 lg:mr-6 shadow-inner">
+          <div className="flex items-center bg-ink rounded-xl p-1 md:mr-1 lg:mr-6 shadow-inner">
             <button
-              onClick={() => setLocale("en")}
               className={`
-        px-4 py-1 font-bold transition-all rounded-full
+        px-4 py-2 font-bold transition-all rounded-xl
         ${
-          locale === "en"
+          currentLang === "en"
             ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow"
             : "text-blue-200 hover:bg-blue-900/50"
         }
       `}
-              aria-pressed={locale === "en"}
-              disabled={locale === "en"}
+              aria-pressed={currentLang === "en"}
+              disabled={currentLang === "en"}
+              onClick={() => {
+                handleLocaleChange("en");
+                dispatch(resetState());
+              }}
             >
               en
             </button>
             <button
-              onClick={() => setLocale("sk")}
               className={`
-        px-4 py-1 font-bold transition-all rounded-full
+        px-4 py-2 font-bold transition-all rounded-xl
         ${
-          locale === "sk"
+          currentLang === "sk"
             ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow"
             : "text-blue-200 hover:bg-blue-900/50"
         }
       `}
-              aria-pressed={locale === "sk"}
-              disabled={locale === "sk"}
+              aria-pressed={currentLang === "sk"}
+              disabled={currentLang === "sk"}
+              onClick={() => {
+                handleLocaleChange("sk");
+                dispatch(resetState());
+              }}
             >
               sk
             </button>
@@ -248,32 +264,38 @@ export default function Header() {
             <span className="text-paper/80">{t("pricing")}</span>
             <div className="flex items-center bg-ink rounded-full p-1 mr-6 shadow-inner">
               <button
-                onClick={() => setLocale("en")}
                 className={`
-        px-4 py-1 font-bold transition-all rounded-full
+        px-4 py-2 font-bold transition-all rounded-full
         ${
-          locale === "en"
+          currentLang === "en"
             ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow"
             : "text-blue-200 hover:bg-blue-900/50"
         }
       `}
-                aria-pressed={locale === "en"}
-                disabled={locale === "en"}
+                aria-pressed={currentLang === "en"}
+                disabled={currentLang === "en"}
+                onClick={() => {
+                  handleLocaleChange("en");
+                  dispatch(resetState());
+                }}
               >
                 en
               </button>
               <button
-                onClick={() => setLocale("sk")}
                 className={`
-        px-4 py-1 font-bold transition-all rounded-full
+        px-4 py-2 font-bold transition-all rounded-full
         ${
-          locale === "sk"
+          currentLang === "sk"
             ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow"
             : "text-blue-200 hover:bg-blue-900/50"
         }
       `}
-                aria-pressed={locale === "sk"}
-                disabled={locale === "sk"}
+                aria-pressed={currentLang === "sk"}
+                disabled={currentLang === "sk"}
+                onClick={() => {
+                  handleLocaleChange("sk");
+                  dispatch(resetState());
+                }}
               >
                 sk
               </button>
