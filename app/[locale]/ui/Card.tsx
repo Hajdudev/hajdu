@@ -24,9 +24,9 @@ function Card({
               style={{ objectFit: "cover" }}
             />
           </div>
-          <div className="w-1/2 pt-15 h-full flex flex-col pr-20 ">
-            <p className="text-5xl mb-15 font-bold">{title}</p>
-            <p className="text-2xl">{text}</p>
+          <div className="w-1/2 pt-15 h-full lg:p-15 xl:p-25 flex flex-col pr-20 ">
+            <p className="text-5xl mb-15 font-lustria font-bold">{title}</p>
+            <p className="text-3xl font-babas-neue">{text}</p>
           </div>
         </div>
       </div>
