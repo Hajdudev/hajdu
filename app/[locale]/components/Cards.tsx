@@ -34,7 +34,7 @@ function Cards() {
           trigger: container,
           start: "top top",
           end: () => `+=${window.innerWidth * (cardElems.length - 1)}`,
-          scrub: 1,
+          scrub: 0.5,
           pin: true,
         },
       });

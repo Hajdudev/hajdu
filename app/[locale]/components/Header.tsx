@@ -7,8 +7,10 @@ import { RootState } from "../store/store";
 import { setSelected, resetState } from "../store/gsap/gsap";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
 
 export default function Header() {
+  gsap.registerPlugin(ScrambleTextPlugin)
   const t = useTranslations("Header");
   const selected = useSelector((state: RootState) => state.gsap.selected);
   const headerRef = useRef(null);
@@ -16,9 +18,30 @@ export default function Header() {
   const dispatch = useDispatch();
   const currentLang = useLocale();
   const router = useRouter();
-
+function scrambleText(id: string) {
+  const element = document.querySelector(`#${id}`);
+  const originalText = element?.textContent;
+  if ( originalText  != undefined ) {
+    gsap.to(element, {
+      duration: 0.8,
+      scrambleText: {
+        text: originalText,
+chars: "ABC23l4234",
+        speed: 1,
+        revealDelay: 0.1,
+        delimiter: " ",
+        tweenLength: false,
+      },
+    });
+  }
+}
   const [isOpen, setIsOpen] = useState(false);
-
+function scrollToSection(id: string) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+}
   function handleLocaleChange(newLocale: string) {
     if (newLocale !== currentLang) {
       window.scrollTo(0, 0);
@@ -120,11 +143,11 @@ export default function Header() {
         </div>
       </div>
       <div className="hidden md:flex gap-13 justify-center w-1/3 items-center">
-        <span className="text-xl text-paper/80" onDragOver={() => {}}>
+        <span id="about" onMouseEnter={() => scrambleText("about")} className="text-xl text-paper/80" onDragOver={() => {}}>
           {t("about")}
         </span>
-        <span className="text-xl text-paper/80">{t("services")}</span>
-        <span className="text-xl text-paper/80">{t("pricing")}</span>
+        <span id="servicesHeader" onMouseEnter={() => scrambleText("servicesHeader")} onClick={() => scrollToSection("services")} className="text-xl text-paper/80">{t("services")}</span>
+        <span id="pricing" onMouseEnter={() => scrambleText("pricing")} className="text-xl text-paper/80">{t("pricing")}</span>
       </div>
       <div className="hidden md:flex w-1/3 justify-end items-center">
         <div className="hidden md:flex w-1/3 justify-end items-center">
@@ -202,6 +225,7 @@ export default function Header() {
     active:after:translate-y-[5%]
   "
           role="button"
+          onClick={() =>  scrollToSection("contact")}
         >
           {t("contact")}
         </button>
@@ -260,7 +284,7 @@ export default function Header() {
           </div>
           <nav className="flex flex-col items-center gap-8 text-3xl font-semibold">
             <span className="text-paper/80">{t("about")}</span>
-            <span className="text-paper/80">{t("services")}</span>
+        <span onClick={() => scrollToSection("services")} className="text-xl text-paper/80">{t("services")}</span>
             <span className="text-paper/80">{t("pricing")}</span>
             <div className="flex items-center bg-ink rounded-full p-1 mr-6 shadow-inner">
               <button
