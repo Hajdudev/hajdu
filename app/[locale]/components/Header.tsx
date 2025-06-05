@@ -19,21 +19,23 @@ export default function Header() {
   const currentLang = useLocale();
   const router = useRouter();
 function scrambleText(id: string) {
-  const element = document.querySelector(`#${id}`);
-  const originalText = element?.textContent;
-  if ( originalText  != undefined ) {
-    gsap.to(element, {
-      duration: 0.8,
-      scrambleText: {
-        text: originalText,
-chars: "ABC23l4234",
-        speed: 1,
-        revealDelay: 0.1,
-        delimiter: " ",
-        tweenLength: false,
-      },
-    });
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  if (!element.dataset.originalText) {
+    element.dataset.originalText = element.textContent ?? "";
   }
+  const originalText = element.dataset.originalText;
+
+  gsap.to(element, {
+    duration: 0.8,
+    scrambleText: {
+      text: originalText,
+      chars: "ABC23l4234",
+      speed: 1,
+      tweenLength: false,
+    },
+  });
 }
   const [isOpen, setIsOpen] = useState(false);
 function scrollToSection(id: string) {
@@ -147,7 +149,6 @@ function scrollToSection(id: string) {
           {t("about")}
         </span>
         <span id="servicesHeader" onMouseEnter={() => scrambleText("servicesHeader")} onClick={() => scrollToSection("services")} className="text-xl text-paper/80">{t("services")}</span>
-        <span id="pricing" onMouseEnter={() => scrambleText("pricing")} className="text-xl text-paper/80">{t("pricing")}</span>
       </div>
       <div className="hidden md:flex w-1/3 justify-end items-center">
         <div className="hidden md:flex w-1/3 justify-end items-center">
@@ -285,7 +286,6 @@ function scrollToSection(id: string) {
           <nav className="flex flex-col items-center gap-8 text-3xl font-semibold">
             <span className="text-paper/80">{t("about")}</span>
         <span onClick={() => scrollToSection("services")} className="text-xl text-paper/80">{t("services")}</span>
-            <span className="text-paper/80">{t("pricing")}</span>
             <div className="flex items-center bg-ink rounded-full p-1 mr-6 shadow-inner">
               <button
                 className={`
