@@ -52,7 +52,7 @@ const rubicMono = Rubik_Mono_One({
 
 export const metadata: Metadata = {
   title: "The Modern Web Agency ",
-  description: "hajdu.dev we create modern 3d websites",
+  description: "We create modern and unique websites",
 };
 
 export default function RootLayout({
